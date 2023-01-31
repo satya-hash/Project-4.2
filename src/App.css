@@ -73,18 +73,70 @@ h5 {font-size: 1.25rem;}
 
 small, .text_small {font-size: 0.8rem;}
 
-.home{
-  /* color: #fff; */
-  /* background-image: url(./Assets/au.png) ; */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
+.home,.about,.contact,.sign-up,.error-page,.dashboard{
+  height: 95vh;
   margin-top: 88px;
 }
 
+.home{
+  /* position: relative; */
+  background-image: url(./Assets/collegeImg.jpg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+
+}
+
+
 .landing{
   max-width: 65vw;
+  background-color: transparent;
+  /* color: #fff; */
+}
+
+.about{
+  min-height:90vh ;
+  background-color: #F0F1F0;
+  position: relative;
+  color: #000000;
+}
+
+
+.sign-up input{
+  width: 23rem;
+}
+
+.contact{
+  min-height: 90vh;
+  /* background-color: #fff; */
+}
+
+.contact-box{
+  width: 95%;
+  height: 90%;
+}
+
+.contact-box input{
+  padding: 1rem 0.3rem;
+}
+
+.contact-box .left{
+  width: 90%;
+}
+
+.card .card-left{
+  background-image: url(./Assets/about.jpg);
+  background-position: center;
+  background-size:cover ;
+  height: 80vh;
+}
+
+.about .card{
+  min-width: 90%;
+min-height:80vh ;
+/* background: #ffffff;
+box-shadow:  -20px 20px 60px #d9d9d9,
+             20px -20px 60px #ffffff; */
 }
 
 .navbar{
@@ -127,8 +179,8 @@ small, .text_small {font-size: 0.8rem;}
 
 .login .right{
   background: #ffffff;
-box-shadow:  -20px -20px 60px #d9d9d9,
-             20px 20px 60px #ffffff;
+box-shadow:  -2px -2px 15px #d9d9d9,
+             2px 2px 15px #ffffff;
 }
 
 .login input{

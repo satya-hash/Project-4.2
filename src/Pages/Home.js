@@ -23,7 +23,7 @@ function Home() {
 						staff to manage student information, track attendance, create
 						reports, and communicate with parents and students.
 					</h5>
-					<button className="btn px-8 py-3 rounded-md flex items-center justify-between bg-blue-600 text-white border-blue-600 border-2 hover:bg-white hover:text-blue-600">
+					<button className="btn px-8 py-3  flex items-center justify-between bg-blue-600 text-white border-blue-600 border-2 hover:bg-white hover:text-blue-600">
 						Read More
 						<UilArrowRight size="28" />
 					</button>

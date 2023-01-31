@@ -31,7 +31,7 @@ function Navbar() {
 					<li className="navlink">
 						<Link to="/signup">Sign Up</Link>
 					</li>
-					<li className="btn px-8 py-3 rounded-md bg-blue-600 text-white border-2 border-blue-600  hover:bg-white hover:text-blue-600">
+					<li className="btn px-8 py-3  bg-blue-600 text-white border-2 border-blue-600  hover:bg-white hover:text-blue-600">
 						<Link to="/login">
 							<button>Login</button>
 						</Link>

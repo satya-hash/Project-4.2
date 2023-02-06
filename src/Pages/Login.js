@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
 import logo from "../Assets/logo.png";
 import login from "../Assets/login.svg";
@@ -7,13 +7,19 @@ import { useAuth } from "../Components/contexts/AuthContext";
 function Login() {
 	let emailRef = useRef();
 	let passRef = useRef();
-	let { signUp } = useAuth();
+	let { logIn, currentUser } = useAuth();
+	let navigate = useNavigate();
 
-	let handleSubmit = (e) => {
+	async function handleSubmit(e) {
 		e.preventDefault();
-
-		signUp(emailRef.current.value, passRef.current.value);
-	};
+		try {
+			await logIn(emailRef.current.value, passRef.current.value);
+			navigate("/dashboard");
+			console.log("success");
+		} catch (err) {
+			console.error(err.message);
+		}
+	}
 
 	return (
 		<div className="login p-32 mt-12 w-full h-screen flex items-center justify-between">
@@ -26,6 +32,7 @@ function Login() {
 						<img src={logo} alt="Logo" />
 					</Link>
 				</div>
+				{currentUser && <p>{currentUser.email}</p>}
 				<form
 					onSubmit={handleSubmit}
 					className="text-left flex flex-col py-8 gap-3"

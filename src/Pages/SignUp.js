@@ -1,16 +1,51 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import signUp from "../Assets/signup.svg";
+import React, { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import signUpImg from "../Assets/signup.svg";
+import { useAuth } from "../Components/contexts/AuthContext";
 
 function SignUp() {
+	let emailRef = useRef();
+	let nameRef = useRef();
+	let passwordRef = useRef();
+	let confirmPasswordRef = useRef();
+	let { signUp, currentUser } = useAuth();
+	let [error, setError] = useState("");
+	let [loading, setLoading] = useState(false);
+	let navigate = useNavigate();
+
+	// console.log(signUp);
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+			return setError("password do not match");
+		}
+
+		try {
+			setError("");
+			setLoading(true);
+			await signUp(emailRef.current.value, passwordRef.current.value);
+			navigate("/dashboard");
+			console.log("sign");
+		} catch (err) {
+			console.error(err.message);
+		}
+
+		setLoading(false);
+	}
+
 	return (
 		<div className="sign-up px-32 flex items-center justify-center">
 			<div className="container flex  items-center justify-between">
 				<div>
-					<img src={signUp} alt="signup" />
+					<img src={signUpImg} alt="signup" />
 				</div>
-				<div className="w-1/2 text-left ">
-					<form className="flex flex-col justify-center items-center gap-5">
+				<div className=" text-left border-2 p-12 rounded-lg ">
+					<form
+						className="flex flex-col justify-center items-center gap-5 "
+						onSubmit={handleSubmit}
+					>
 						<p>
 							Already a User?{" "}
 							<Link
@@ -20,11 +55,13 @@ function SignUp() {
 								Login
 							</Link>{" "}
 						</p>
+						{error && <p className="text-red-600">{error}</p>}
 						<div className="eamil">
 							<h6>
 								<label htmlFor="email">E-mail :</label>
 							</h6>
 							<input
+								ref={emailRef}
 								type="email"
 								name="email"
 								id="email"
@@ -38,6 +75,7 @@ function SignUp() {
 								<label htmlFor="fName">Full Name :</label>
 							</h6>
 							<input
+								ref={nameRef}
 								type="text"
 								name="fName"
 								id="fName"
@@ -51,6 +89,7 @@ function SignUp() {
 								<label htmlFor="pwd">Password :</label>
 							</h6>
 							<input
+								ref={passwordRef}
 								type="password"
 								name="pwd"
 								id="pwd"
@@ -64,6 +103,7 @@ function SignUp() {
 								<label htmlFor="cPwd">Confirm Password :</label>
 							</h6>
 							<input
+								ref={confirmPasswordRef}
 								type="password"
 								name="cPwd"
 								id="cPwd"
@@ -73,6 +113,7 @@ function SignUp() {
 							/>
 						</div>
 						<button
+							disabled={loading}
 							type="submit"
 							className="px-8 py-3 btn bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
 						>

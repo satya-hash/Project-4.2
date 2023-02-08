@@ -3,17 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import signUpImg from "../Assets/signup.svg";
 import { useAuth } from "../Components/contexts/AuthContext";
 
+function Loading() {
+	return (
+		<div class="spinner-box flex justify-center items-center h-screen">
+			<div class="three-quarter-spinner"></div>
+		</div>
+	);
+}
+
 function SignUp() {
 	let emailRef = useRef();
-	let nameRef = useRef();
 	let passwordRef = useRef();
 	let confirmPasswordRef = useRef();
-	let { signUp, currentUser } = useAuth();
+	let { signUp } = useAuth();
 	let [error, setError] = useState("");
 	let [loading, setLoading] = useState(false);
 	let navigate = useNavigate();
-
-	// console.log(signUp);
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -26,16 +31,19 @@ function SignUp() {
 			setError("");
 			setLoading(true);
 			await signUp(emailRef.current.value, passwordRef.current.value);
-			navigate("/dashboard");
+			navigate("/profile");
 			console.log("sign");
 		} catch (err) {
+			setError(err.message);
 			console.error(err.message);
 		}
 
 		setLoading(false);
 	}
 
-	return (
+	return loading ? (
+		<Loading />
+	) : (
 		<div className="sign-up px-32 flex items-center justify-center">
 			<div className="container flex  items-center justify-between">
 				<div>
@@ -46,15 +54,6 @@ function SignUp() {
 						className="flex flex-col justify-center items-center gap-5 "
 						onSubmit={handleSubmit}
 					>
-						<p>
-							Already a User?{" "}
-							<Link
-								className="font-semibold text-blue-700 underline"
-								to="/login"
-							>
-								Login
-							</Link>{" "}
-						</p>
 						{error && <p className="text-red-600">{error}</p>}
 						<div className="eamil">
 							<h6>
@@ -70,7 +69,7 @@ function SignUp() {
 								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 							/>
 						</div>
-						<div className="fname">
+						{/* <div className="fname">
 							<h6>
 								<label htmlFor="fName">Full Name :</label>
 							</h6>
@@ -83,7 +82,7 @@ function SignUp() {
 								required
 								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 							/>
-						</div>
+						</div> */}
 						<div className="pass">
 							<h6>
 								<label htmlFor="pwd">Password :</label>
@@ -120,6 +119,12 @@ function SignUp() {
 							Sign Up
 						</button>
 					</form>
+					<p className="text-center mt-3">
+						Already a User?{" "}
+						<Link className="font-semibold text-blue-700 underline" to="/login">
+							Login
+						</Link>{" "}
+					</p>
 				</div>
 			</div>
 		</div>

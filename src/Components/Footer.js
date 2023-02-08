@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
+import { useAuth } from "./contexts/AuthContext";
 import {
 	UilFacebookF,
 	UilTwitter,
@@ -9,6 +10,7 @@ import {
 } from "@iconscout/react-unicons";
 
 function Footer() {
+	let { currentUser } = useAuth();
 	return (
 		<div className="footer px-32 py-8 flex gap-5 flex-col">
 			<div className="links flex justify-between items-center">
@@ -50,9 +52,11 @@ function Footer() {
 							<li>
 								<Link to="/">Home</Link>
 							</li>
-							<li>
-								<Link to="/circular">Circular</Link>
-							</li>
+							{currentUser && (
+								<li>
+									<Link to="/circular">Circular</Link>
+								</li>
+							)}
 							<li>
 								<Link to="/contact">Contact Us</Link>
 							</li>

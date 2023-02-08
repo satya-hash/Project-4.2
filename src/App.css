@@ -97,7 +97,8 @@ small,
 .contact,
 .sign-up,
 .error-page,
-.dashboard {
+.dashboard,
+.profile-form {
 	height: 95vh;
 	margin-top: 88px;
 }
@@ -220,4 +221,163 @@ box-shadow:  -20px 20px 60px #d9d9d9,
 .footer .page-links li,
 .btn {
 	transition: all ease-in-out 0.3s;
+}
+
+/* this is the logout styles */
+
+.dropbtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	height: 48px;
+	width: 48px;
+	font-size: 16px;
+	border: none;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	transform: translateX(-20px);
+	background-color: #fff;
+	padding: 5px 12px;
+	min-width: 100px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ffffff;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* loading animation */
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(359deg);
+	}
+}
+
+.spinner-box {
+	background-color: transparent;
+}
+
+.three-quarter-spinner {
+	width: 50px;
+	height: 50px;
+	border: 3px solid #536ffb;
+	border-top: 3px solid transparent;
+	border-radius: 50%;
+	animation: spin 0.5s linear 0s infinite;
+}
+
+/* Profile - Form Styles */
+
+.profile-form form {
+	text-align: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.profile-form form .details {
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 3rem;
+}
+
+.custom-field {
+	position: relative;
+	font-size: 14px;
+	border-top: 20px solid transparent;
+	margin-bottom: 5px;
+	display: inline-block;
+	--field-padding: 12px;
+}
+
+.custom-field input {
+	min-width: 25rem;
+	border: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: #f2f2f2;
+	padding: var(--field-padding);
+	border-radius: 3px;
+	width: 250px;
+	outline: none;
+	font-size: 14px;
+}
+
+.custom-field .placeholder {
+	position: absolute;
+	left: var(--field-padding);
+	width: calc(100% - (var(--field-padding) * 2));
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	top: 22px;
+	line-height: 100%;
+	transform: translateY(-50%);
+	color: #aaa;
+	transition: top 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+}
+
+.custom-field input.dirty + .placeholder,
+.custom-field input:focus + .placeholder,
+.custom-field input:not(:placeholder-shown) + .placeholder {
+	top: -10px;
+	font-size: 10px;
+	color: #405ba6;
+}
+
+.custom-field.two input {
+	border-radius: 0;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	background: linear-gradient(90deg, #405ba6, #405ba6) center bottom/0 0.15em
+			no-repeat,
+		linear-gradient(90deg, #ccc, #ccc) left bottom/100% 0.15em no-repeat,
+		linear-gradient(90deg, #fafafa, #fafafa) left bottom/100% no-repeat;
+	transition: background-size 0.3s ease;
+}
+
+.custom-field.two input.dirty,
+.custom-field.two input:not(:placeholder-shown),
+.custom-field.two input:focus {
+	background-size: 100% 0.15em, 100% 0.1em, 100%;
+}
+
+.dashboard .item {
+	width: 15rem;
+	display: flex;
+	gap: 3rem;
+}
+
+.dashboard .student-details {
+	width: 50%;
+	margin: auto;
 }

@@ -30,9 +30,11 @@ function Navbar() {
 					<li className="navlink">
 						<Link to="/">Home</Link>
 					</li>
-					<li className="navlink">
-						<Link to="/circular">Circular</Link>
-					</li>
+					{currentUser && (
+						<li className="navlink">
+							<Link to="/dashboard">Dashboard</Link>
+						</li>
+					)}
 					<li className="navlink">
 						<Link to="/contact">Contact Us</Link>
 					</li>
@@ -54,9 +56,18 @@ function Navbar() {
 						</li>
 					</ul>
 				) : (
-					<div onClick={handleLogOut}>
-						<div className="rounded-full w-12 h-12 bg-red-400"></div>
-						<button>logout</button>
+					<div class="dropdown  ">
+						<button class="dropbtn rounded-full ">
+							<img
+								className="w-12 rounded-full"
+								src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+								alt=""
+							/>
+						</button>
+						<div class="dropdown-content">
+							<p className="text-red-400"> {currentUser.displayName}</p>
+							<button onClick={handleLogOut}>logout</button>
+						</div>
 					</div>
 				)}
 			</div>

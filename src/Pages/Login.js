@@ -1,27 +1,44 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
 import logo from "../Assets/logo.png";
 import login from "../Assets/login.svg";
 import { useAuth } from "../Components/contexts/AuthContext";
+
+function Loading() {
+	return (
+		<div class="spinner-box flex justify-center items-center h-screen">
+			<div class="three-quarter-spinner"></div>
+		</div>
+	);
+}
+
 function Login() {
 	let emailRef = useRef();
 	let passRef = useRef();
 	let { logIn, currentUser } = useAuth();
+	let [load, setLoad] = useState(false);
+	let [error, setError] = useState("");
 	let navigate = useNavigate();
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
+			setLoad(true);
 			await logIn(emailRef.current.value, passRef.current.value);
+
 			navigate("/dashboard");
 			console.log("success");
 		} catch (err) {
-			console.error(err.message);
+			setError(err.code);
+			console.error(err.code);
 		}
+		setLoad(false);
 	}
 
-	return (
+	return load ? (
+		<Loading />
+	) : (
 		<div className="login p-32 mt-12 w-full h-screen flex items-center justify-between">
 			<div className="left w-1/2">
 				<img src={login} alt="login" />
@@ -32,7 +49,7 @@ function Login() {
 						<img src={logo} alt="Logo" />
 					</Link>
 				</div>
-				{currentUser && <p>{currentUser.email}</p>}
+				{error}
 				<form
 					onSubmit={handleSubmit}
 					className="text-left flex flex-col py-8 gap-3"
@@ -49,16 +66,6 @@ function Login() {
 						required
 						className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 					/>
-					{/* <h6>
-						<label htmlFor="reg">Registration No :</label>
-					</h6>
-					<input
-						type="number"
-						name="reg"
-						id="reg"
-						placeholder="Reg No"
-						className="px-3 py-2 border-2  outline-none focus:scale-110 my-2"
-					/> */}
 					<h6>
 						<label htmlFor="password">Password :</label>
 					</h6>
@@ -73,7 +80,7 @@ function Login() {
 					/>
 					<button
 						type="submit"
-						className="px-5 py-3 bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
+						className="btn px-5 py-3 bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
 					>
 						Login
 					</button>

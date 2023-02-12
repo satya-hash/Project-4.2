@@ -4,14 +4,16 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Login from "./Pages/Login";
-import SignUp from "./Pages/SignUp";
 import ErrorPage from "./Pages/ErrorPage";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Dashboard from "./Pages/Dashboard";
 import { AuthProvider } from "./Components/contexts/AuthContext";
-import PrivateRoute from "./Pages/PrivateRoute";
 import ProfileForm from "./Pages/ProfileForm";
+import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import AuthRoute from "./Pages/AuthRoute";
+import SignUp from "./Pages/SignUp";
+import AdminLogIn from "./Pages/Admin/AdminLogIn";
 
 function App() {
 	return (
@@ -24,23 +26,24 @@ function App() {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/signup" element={<SignUp />} />
-					<Route path="/profile" element={<ProfileForm />} />
-					{/* <Route
-						path="/profile"
-						element={
-							<PrivateRoute>
-								<ProfileForm />
-							</PrivateRoute>
-						}
-					/> */}
+
 					<Route
 						path="/dashboard"
 						element={
-							<PrivateRoute>
+							<AuthRoute>
 								<Dashboard />
-							</PrivateRoute>
+							</AuthRoute>
 						}
 					/>
+					{/* <Route
+						path="/admin_dashboard"
+						element={
+							<AuthRoute>
+								<AdminDashboard />
+							</AuthRoute>
+						}
+					/> */}
+					<Route path="/admin" element={<AdminLogIn />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />

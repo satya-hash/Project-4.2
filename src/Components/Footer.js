@@ -12,32 +12,32 @@ import {
 function Footer() {
 	let { currentUser } = useAuth();
 	return (
-		<div className="footer px-32 py-8 flex gap-5 flex-col">
-			<div className="links flex justify-between items-center">
-				<div className="left flex flex-col gap-5 items-center justify-center">
-					<div className="logo w-80 ">
+		<div className="footer">
+			<div className="footer-links">
+				<div className="footer-left ">
+					<div className="logo ">
 						<Link to="/">
-							<img src={logo} alt="Logo" />
+							<img src={logo} alt="Logo" className="logo" />
 						</Link>
 					</div>
-					<div className="social">
-						<ul className="flex gap-3">
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 icon hover:text-blue-300">
+					<div className="footer-social">
+						<ul>
+							<li>
 								<a href="*">
 									<UilFacebookF size="24" color="#1F92CD" />
 								</a>
 							</li>
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 icon hover:text-blue-300">
+							<li>
 								<a href="*">
 									<UilTwitter size="24" color="#39BCF8" />
 								</a>
 							</li>
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 icon hover:text-blue-300">
+							<li>
 								<a href="*">
 									<UilGithub size="24" />
 								</a>
 							</li>
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 icon hover:text-blue-300">
+							<li>
 								<a href="*">
 									<UilInstagramAlt size="24" color="#BA30A6" />
 								</a>
@@ -45,29 +45,28 @@ function Footer() {
 						</ul>
 					</div>
 				</div>
-				<div className="right flex gap-16">
-					<div className="page-links flex flex-col text-left">
+				<div className="footer-right">
+					<div className="page-links">
 						<h5>Pages</h5>
-						<ul className="text-md">
+						<ul>
 							<li>
 								<Link to="/">Home</Link>
 							</li>
-							{currentUser && (
-								<li>
-									<Link to="/circular">Circular</Link>
-								</li>
-							)}
+
 							<li>
 								<Link to="/contact">Contact Us</Link>
 							</li>
 							<li>
 								<Link to="/about">About Us</Link>
 							</li>
+							{/* <li>
+								<Link to="/admin">Admin Login</Link>
+							</li> */}
 						</ul>
 					</div>
-					<div className="page-links flex flex-col text-left">
+					<div className="page-links ">
 						<h5>Other Resources</h5>
-						<ul className="text-md">
+						<ul>
 							<li>
 								<Link to="/">MIT License</Link>
 							</li>
@@ -81,8 +80,13 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-			<div className="horizantal-line border-b-2 border-gray-500 " />
-			<div className="copy-right">
+			<div className="line"></div>
+			<div
+				className="copy-right"
+				style={{
+					textAlign: "center",
+				}}
+			>
 				Copyright © {new Date().getFullYear()} by 4/4 CSE.
 			</div>
 		</div>

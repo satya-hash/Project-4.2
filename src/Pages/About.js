@@ -1,13 +1,14 @@
 import React from "react";
 import { UilArrowRight } from "@iconscout/react-unicons";
+import aboutImg from "../Assets/about.jpg";
 
 function About() {
 	return (
-		<div className="about flex justify-center items-center px-32 text-left w-full ">
-			<div className="card flex justify-center items-center">
-				<div className="card-left w-1/2 rounded-l-lg"></div>
-				<div className="card-right  px-8 w-1/2">
-					<h1 className=" font-bold  ">About Us!</h1>
+		<div className="about ">
+			<div className="card ">
+				<div className="card-left ">{/* <img src={aboutImg} alt="" /> */}</div>
+				<div className="card-right">
+					<h1 className=" ">About Us!</h1>
 					<div className="mx-auto">
 						<p>
 							Student Management system is a Professional Educational Platform.
@@ -18,7 +19,7 @@ function About() {
 							website. We hope you enjoy our Educational as much as we enjoy
 							giving them to you.
 						</p>
-						<button className="btn px-5 py-3 flex justify-between items-center bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white">
+						<button className="btn ">
 							{" "}
 							Learn More <UilArrowRight size="28" />
 						</button>

@@ -3,7 +3,7 @@ import { useAuth } from "../Components/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function ProfileForm() {
-	let { currentUser, setUserData, setProfile } = useAuth();
+	let { setUserData, setProfile } = useAuth();
 	let navigate = useNavigate();
 
 	// console.log(currentUser.uid);
@@ -30,18 +30,15 @@ function ProfileForm() {
 
 		// await setDoc(doc(db, "users", currentUser.uid), user);
 
-		if (currentUser) {
-			await setUserData(user);
-			await setProfile(user.fName + user.lName);
+		await setUserData(user);
+		await setProfile(user.fName + user.lName);
 
-			// console.log(user);
-			navigate("/Dashboard");
-		}
-		navigate("/login");
+		// console.log(user);
+		navigate("/Dashboard");
 	}
 
 	return (
-		<div className="profile-form px-32 flex justify-center items-center">
+		<div className="profile-form ">
 			<form onSubmit={handleSubmit} onChange={handleChange} method="post">
 				<div className="details">
 					<label class="custom-field two">
@@ -115,10 +112,7 @@ function ProfileForm() {
 				<input type="tel" name="phno" id="phno " />
 				<input type="file" name="profile" id="profile" />
 				<input type="number" name="year" id="year" /> */}
-				<button
-					type="submit"
-					className="btn px-5 py-3 bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
-				>
+				<button type="submit" className="btn ">
 					Continue
 				</button>
 			</form>

@@ -3,12 +3,12 @@ import { UilMapMarker, UilPhone, UilEnvelope } from "@iconscout/react-unicons";
 
 function Contact() {
 	return (
-		<div className="contact mt-32 px-32 ">
-			<h1 className="capitalize">get in touch</h1>
+		<div className="contact">
+			<h1>get in touch</h1>
 
-			<div className="flex justify-between gap-3 contact-box mx-auto">
-				<div className="left py-5">
-					<form className=" flex flex-col px-24 gap-5">
+			<div className="contact-box ">
+				<div className="left">
+					<form>
 						<h4>Send a message</h4>
 						{/* <label htmlFor="firstName">First Name</label> */}
 						<input
@@ -17,7 +17,7 @@ function Contact() {
 							id="Name"
 							placeholder="Name"
 							required
-							className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
+							// className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
 						/>{" "}
 						{/* <label htmlFor="email">Email</label> */}
 						<input
@@ -26,7 +26,7 @@ function Contact() {
 							id="email"
 							placeholder="Email"
 							required
-							className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
+							// className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
 						/>{" "}
 						{/* <label htmlFor="message">Message</label> */}
 						<textarea
@@ -36,27 +36,27 @@ function Contact() {
 							cols="30"
 							rows="3"
 							required
-							className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
+							// className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
 						></textarea>
-						<button className="btn px-5 py-3 w-28 bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white">
-							Send
-						</button>
+						<button className="btn">Send</button>
 					</form>
 				</div>
-				<div className="right  flex flex-col gap-3">
-					<div className="top bg-white h-1/2">
+				<div className="right">
+					<div className="top ">
 						<h4>Contact Info </h4>
 						<table className="">
-							<tr className="flex gap-3 justify-between items-center">
-								<td>
-									<UilMapMarker size="28" />
-								</td>
-								<td>
-									<p>Andhra University, Visakhapatnam-530003.</p>
-								</td>
-							</tr>
+							<a href="#">
+								<tr>
+									<td>
+										<UilMapMarker size="28" />
+									</td>
+									<td>
+										<p>Andhra University, Visakhapatnam-530003.</p>
+									</td>
+								</tr>
+							</a>
 							<a href="mailto:sathyagangadhar@gmail.com">
-								<tr className="flex gap-3  items-center">
+								<tr>
 									<td>
 										<UilEnvelope size="28" />
 									</td>
@@ -66,7 +66,7 @@ function Contact() {
 								</tr>
 							</a>
 							<a href="tel:9550973113">
-								<tr className="flex gap-3  items-center">
+								<tr>
 									<td>
 										<UilPhone size="28" />
 									</td>

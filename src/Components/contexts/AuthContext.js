@@ -36,11 +36,11 @@ export function AuthProvider({ children }) {
 	}
 
 	function setUserData(userData) {
-		return setDoc(doc(db, "users", currentUser.uid), userData);
+		return setDoc(doc(db, "students", currentUser.uid), userData);
 	}
 
-	function showResult() {
-		return getDoc(doc(db, "users", currentUser.uid));
+	function getData() {
+		return getDoc(doc(db, "students", currentUser.uid));
 	}
 
 	useEffect(() => {
@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
 		logOut,
 		setProfile,
 		setUserData,
-		showResult,
+		getData,
 	};
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

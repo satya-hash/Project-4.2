@@ -7,7 +7,7 @@ import { useAuth } from "../Components/contexts/AuthContext";
 
 function Loading() {
 	return (
-		<div class="spinner-box flex justify-center items-center h-screen">
+		<div class="spinner-box">
 			<div class="three-quarter-spinner"></div>
 		</div>
 	);
@@ -16,22 +16,26 @@ function Loading() {
 function Login() {
 	let emailRef = useRef();
 	let passRef = useRef();
-	let { logIn, currentUser } = useAuth();
+	let { logIn, currentUser, getData } = useAuth();
 	let [load, setLoad] = useState(false);
 	let [error, setError] = useState("");
 	let navigate = useNavigate();
+
+	if (currentUser) {
+		return navigate("/dashboard");
+	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
 			setLoad(true);
 			await logIn(emailRef.current.value, passRef.current.value);
-
 			navigate("/dashboard");
 			console.log("success");
 		} catch (err) {
 			setError(err.code);
 			console.error(err.code);
+			console.error(err.message);
 		}
 		setLoad(false);
 	}
@@ -39,70 +43,66 @@ function Login() {
 	return load ? (
 		<Loading />
 	) : (
-		<div className="login p-32 mt-12 w-full h-screen flex items-center justify-between">
-			<div className="left w-1/2">
+		<div className="login ">
+			<div className="login-left ">
 				<img src={login} alt="login" />
 			</div>
-			<div className="right pt-5  rounded-md  px-12 w-2/5">
-				<div className="logo w-80 mx-auto ">
+			<div className="login-right ">
+				<div className="logo">
 					<Link to="/">
-						<img src={logo} alt="Logo" />
+						<img src={logo} alt="Logo" className="logo" />
 					</Link>
 				</div>
 				{error}
-				<form
-					onSubmit={handleSubmit}
-					className="text-left flex flex-col py-8 gap-3"
-				>
-					<h6>
-						<label htmlFor="email">E-mail :</label>
-					</h6>
-					<input
-						type="text"
-						name="email"
-						id="email"
-						ref={emailRef}
-						placeholder="example@gamil.com"
-						required
-						className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
-					/>
-					<h6>
-						<label htmlFor="password">Password :</label>
-					</h6>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						ref={passRef}
-						placeholder="*****************"
-						required
-						className=" px-3 py-2 border-2  outline-none focus:drop-shadow-lg "
-					/>
-					<button
-						type="submit"
-						className="btn px-5 py-3 bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
-					>
+				<form onSubmit={handleSubmit}>
+					<div>
+						<p>
+							<label htmlFor="email">E-mail :</label>
+						</p>
+						<input
+							type="text"
+							name="email"
+							id="email"
+							ref={emailRef}
+							placeholder="example@gamil.com"
+							required
+						/>
+					</div>
+					<div>
+						<p>
+							<label htmlFor="password">Password :</label>
+						</p>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							ref={passRef}
+							placeholder="*****************"
+							required
+						/>
+					</div>
+					<button type="submit" className="btn ">
 						Login
 					</button>
-					<div className="sign flex justify-between items-center">
+					<div className="sign-op">
 						<a href="*">Forget Password?</a>
 						<Link to="/signup">Sign Up</Link>
 					</div>
 					<hr />
-					<div className="text-center">
+					<div>
 						<small>Or Sign Up with</small>
-						<ul className="flex justify-center gap-3 items-center mt-3">
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 hover:text-blue-300 icon">
+						<ul>
+							<li className=" icon">
 								<a href="*">
 									<UilFacebookF size="32" />
 								</a>
 							</li>
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 hover:text-blue-300 icon">
+							<li className=" icon">
 								<a href="*">
 									<UilGithub size="32" />
 								</a>
 							</li>
-							<li className="bg-white p-3 rounded-full drop-shadow-xl hover:-translate-y-1 hover:text-blue-300 icon">
+							<li className=" icon">
 								<a href="*">
 									<UilEnvelope size="32" />
 								</a>

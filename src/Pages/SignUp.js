@@ -44,21 +44,18 @@ function SignUp() {
 	return loading ? (
 		<Loading />
 	) : (
-		<div className="sign-up px-32 flex items-center justify-center">
-			<div className="container flex  items-center justify-between">
+		<div className="sign-up">
+			<div className="container">
 				<div>
 					<img src={signUpImg} alt="signup" />
 				</div>
-				<div className=" text-left border-2 p-12 rounded-lg ">
-					<form
-						className="flex flex-col justify-center items-center gap-5 "
-						onSubmit={handleSubmit}
-					>
+				<div className="sign-form">
+					<form onSubmit={handleSubmit}>
 						{error && <p className="text-red-600">{error}</p>}
-						<div className="eamil">
-							<h6>
+						<div className="email">
+							<p>
 								<label htmlFor="email">E-mail :</label>
-							</h6>
+							</p>
 							<input
 								ref={emailRef}
 								type="email"
@@ -66,27 +63,13 @@ function SignUp() {
 								id="email"
 								placeholder="Enter E-mail"
 								required
-								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 							/>
 						</div>
-						{/* <div className="fname">
-							<h6>
-								<label htmlFor="fName">Full Name :</label>
-							</h6>
-							<input
-								ref={nameRef}
-								type="text"
-								name="fName"
-								id="fName"
-								placeholder="Enter Full Name"
-								required
-								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
-							/>
-						</div> */}
+
 						<div className="pass">
-							<h6>
+							<p>
 								<label htmlFor="pwd">Password :</label>
-							</h6>
+							</p>
 							<input
 								ref={passwordRef}
 								type="password"
@@ -94,13 +77,12 @@ function SignUp() {
 								id="pwd"
 								placeholder="Password"
 								required
-								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 							/>
 						</div>
 						<div className="cpass">
-							<h6>
+							<p>
 								<label htmlFor="cPwd">Confirm Password :</label>
-							</h6>
+							</p>
 							<input
 								ref={confirmPasswordRef}
 								type="password"
@@ -108,22 +90,14 @@ function SignUp() {
 								id="cPwd"
 								placeholder="Confirm Password"
 								required
-								className="px-3 py-2 border-2  outline-none focus:drop-shadow-lg  "
 							/>
 						</div>
-						<button
-							disabled={loading}
-							type="submit"
-							className="px-8 py-3 btn bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white"
-						>
+						<button disabled={loading} type="submit" className="btn">
 							Sign Up
 						</button>
 					</form>
-					<p className="text-center mt-3">
-						Already a User?{" "}
-						<Link className="font-semibold text-blue-700 underline" to="/login">
-							Login
-						</Link>{" "}
+					<p style={{ textAlign: "center" }}>
+						Already a User? <Link to="/login">Login</Link>{" "}
 					</p>
 				</div>
 			</div>

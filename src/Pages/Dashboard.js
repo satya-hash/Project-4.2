@@ -5,7 +5,7 @@ import { useAuth } from "../Components/contexts/AuthContext";
 import Attendance from "./dash/Attendance";
 import Result from "./dash/Result";
 import Details from "./dash/Details";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import AdminDashboard from "./Admin/AdminDashboard";
 
 function Dashboard() {
@@ -21,7 +21,6 @@ function Dashboard() {
 		let res = await getData();
 		let data = await res.data();
 		setUser(data);
-		console.log(data.role);
 	}
 
 	useEffect(() => {
@@ -30,7 +29,7 @@ function Dashboard() {
 
 	if (user) {
 		if (user.role === "admin") {
-			return <AdminDashboard />;
+			return <Navigate to="/admin_dashboard" />;
 		} else {
 			function handleResult() {
 				setAttendance(false);

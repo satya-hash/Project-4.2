@@ -13,7 +13,7 @@ import ProfileForm from "./Pages/ProfileForm";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AuthRoute from "./Pages/AuthRoute";
 import SignUp from "./Pages/SignUp";
-import AdminLogIn from "./Pages/Admin/AdminLogIn";
+import UpdateForm from "./Pages/Forms/UpdateForm";
 
 function App() {
 	return (
@@ -35,15 +35,22 @@ function App() {
 							</AuthRoute>
 						}
 					/>
-					{/* <Route
+					<Route
 						path="/admin_dashboard"
 						element={
 							<AuthRoute>
 								<AdminDashboard />
 							</AuthRoute>
 						}
-					/> */}
-					<Route path="/admin" element={<AdminLogIn />} />
+					/>
+					<Route
+						path="/update_form"
+						element={
+							<AuthRoute>
+								<UpdateForm />
+							</AuthRoute>
+						}
+					/>
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 				<Footer />

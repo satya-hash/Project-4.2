@@ -72,76 +72,55 @@ function NewStudent() {
 					[name]: value,
 				},
 			});
-		} else if (
-			name === "maths" ||
-			name === "db" ||
-			name === "cpnm" ||
-			name === "toc" ||
-			name === "cpp" ||
-			name === "cn" ||
-			name === "dsa"
-		) {
-			const year = name.split("_")[0];
-			const subject = name.split("_")[1];
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					[year]: {
-						...student.result[year],
-						[subject]: value,
-					},
-				},
-			});
 		} else {
 			setStudent({ ...student, [name]: value });
 		}
 	}
-	// function handleChangeAttendance(e) {
-	// 	setStudent({
-	// 		...student,
-	// 		attendance: {
-	// 			...student.attendance,
-	// 			[e.target.name]: e.target.value,
-	// 		},
-	// 	});
-	// }
-	// function handleChangeResultYear_1(e) {
-	// 	setStudent({
-	// 		...student,
-	// 		result: {
-	// 			...student.result,
-	// 			year_1: {
-	// 				...student.result.year_1,
-	// 				[e.target.name]: e.target.value,
-	// 			},
-	// 		},
-	// 	});
-	// }
-	// function handleChangeResultYear_2(e) {
-	// 	setStudent({
-	// 		...student,
-	// 		result: {
-	// 			...student.result,
-	// 			year_2: {
-	// 				...student.result.year_2,
-	// 				[e.target.name]: e.target.value,
-	// 			},
-	// 		},
-	// 	});
-	// }
-	// function handleChangeResultYear_3(e) {
-	// 	setStudent({
-	// 		...student,
-	// 		result: {
-	// 			...student.result,
-	// 			year_3: {
-	// 				...student.result.year_3,
-	// 				[e.target.name]: e.target.value,
-	// 			},
-	// 		},
-	// 	});
-	// }
+	function handleChangeAttendance(e) {
+		setStudent({
+			...student,
+			attendance: {
+				...student.attendance,
+				[e.target.name]: e.target.value,
+			},
+		});
+	}
+	function handleChangeResultYear_1(e) {
+		setStudent({
+			...student,
+			result: {
+				...student.result,
+				year_1: {
+					...student.result.year_1,
+					[e.target.name]: e.target.value,
+				},
+			},
+		});
+	}
+	function handleChangeResultYear_2(e) {
+		setStudent({
+			...student,
+			result: {
+				...student.result,
+				year_2: {
+					...student.result.year_2,
+					[e.target.name]: e.target.value,
+				},
+			},
+		});
+	}
+	function handleChangeResultYear_3(e) {
+		setStudent({
+			...student,
+			result: {
+				...student.result,
+				year_3: {
+					...student.result.year_3,
+					[e.target.name]: e.target.value,
+				},
+			},
+		});
+	}
 
 	return (
 		<>

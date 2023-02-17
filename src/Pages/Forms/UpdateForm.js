@@ -225,7 +225,13 @@ function UpdateForm() {
 														name={subName}
 														value={subMarks}
 														placeholder="&nbsp;"
-														onChange={handleChange}
+														onChange={
+															year === "year_1"
+																? handleChangeResultYear_1
+																: year === "year_2"
+																? handleChangeResultYear_2
+																: handleChangeResultYear_3
+														}
 													/>
 													<span
 														style={{

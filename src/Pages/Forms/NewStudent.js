@@ -44,13 +44,10 @@ function NewStudent() {
 				passwordRef.current.value
 			);
 			console.log("accout created");
-			console.log(currentUser.uid);
 
 			await setUserData(newStudent.user.uid, student);
-			console.log("data stored");
 
 			await setProfile(student.fName + student.lName);
-			console.log("profile updated");
 
 			await logIn(currentUser.email, currentUser.password);
 		} catch (err) {
@@ -59,7 +56,6 @@ function NewStudent() {
 		}
 
 		navigate("/admin_dashboard");
-		console.log(student);
 	}
 	function handleChange(event) {
 		const { name, value } = event.target;
@@ -257,130 +253,60 @@ function NewStudent() {
 					<br />
 					<strong> Attendance </strong>
 					<div className="attend">
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="year_1"
-								// value={student.attendance.year_1}
-								placeholder="&nbsp;"
-								onChange={handleChangeAttendance}
-							/>
-							<span class="placeholder">Attendance year-1 </span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="year_2"
-								// value={student.attendance.year_2}
-								placeholder="&nbsp;"
-								onChange={handleChangeAttendance}
-							/>
-							<span class="placeholder">Attendance year-2</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="year_3"
-								// value={student.attendance.year_3}
-								placeholder="&nbsp;"
-								onChange={handleChangeAttendance}
-							/>
-							<span class="placeholder">Attendance year-3</span>
-						</label>{" "}
+						{Object.keys(student.attendance)
+							.sort()
+							.map((year) => (
+								<label class="custom-field two">
+									<input
+										type="text"
+										name={year}
+										value={student.attendance[year]}
+										placeholder="&nbsp;"
+										onChange={handleChange}
+									/>
+									<span class="placeholder">Attendance {year} </span>
+								</label>
+							))}
 					</div>
 					<br />
 					<strong>Result</strong>
 					<div className="result">
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="cpnm"
-								// value={student.cpnm}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_1}
-							/>
-							<span class="placeholder">Result year-1</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="db"
-								// value={student.db}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_1}
-							/>
-							<span class="placeholder">Result year-1</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="maths"
-								// value={student.maths}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_1}
-							/>
-							<span class="placeholder">Result year-1</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="cpp"
-								// value={student.cpp}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_2}
-							/>
-							<span class="placeholder">Result year-2</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="maths"
-								// value={student.maths}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_2}
-							/>
-							<span class="placeholder">Result year-2</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="toc"
-								// value={student.toc}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_2}
-							/>
-							<span class="placeholder">Result year-2</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="cn"
-								// value={student.cn}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_3}
-							/>
-							<span class="placeholder">Result year-3</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="dsa"
-								// value={student.dsa}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_3}
-							/>
-							<span class="placeholder">Result year-3</span>
-						</label>{" "}
-						<label class="custom-field two">
-							<input
-								type="text"
-								name="maths"
-								// value={student.maths}
-								placeholder="&nbsp;"
-								onChange={handleChangeResultYear_3}
-							/>
-							<span class="placeholder">Result year-3</span>
-						</label>{" "}
+						{Object.entries(student.result)
+							.sort()
+							.map(([year, subs]) => {
+								console.log(year, subs);
+								return Object.entries(subs).map(([subName, subMarks]) => {
+									console.log(subName, subMarks);
+									return (
+										<>
+											<label class="custom-field two">
+												<input
+													type="text"
+													name={subName}
+													value={subMarks}
+													placeholder="&nbsp;"
+													onChange={
+														year === "year_1"
+															? handleChangeResultYear_1
+															: year === "year_2"
+															? handleChangeResultYear_2
+															: handleChangeResultYear_3
+													}
+												/>
+												<span
+													style={{
+														textTransform: "capitalize",
+													}}
+													class="placeholder"
+												>
+													{" "}
+													{subName}{" "}
+												</span>
+											</label>
+										</>
+									);
+								});
+							})}
 					</div>
 					<button
 						className="btn"

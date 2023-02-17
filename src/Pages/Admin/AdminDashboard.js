@@ -24,8 +24,10 @@ function AdminDashboard() {
 
 	async function handleDelete(email, id) {
 		try {
-			await deleteData(id);
 			console.log("data deleted");
+
+			await deleteData(id);
+			getAllStudentsData();
 		} catch (err) {
 			console.log(err.meassage);
 			console.log(err.code);

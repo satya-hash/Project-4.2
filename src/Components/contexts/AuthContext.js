@@ -7,7 +7,14 @@ import {
 	signOut,
 	updateProfile,
 } from "firebase/auth";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import {
+	collection,
+	deleteDoc,
+	doc,
+	getDoc,
+	getDocs,
+	setDoc,
+} from "firebase/firestore";
 
 let AuthContext = createContext();
 
@@ -35,14 +42,21 @@ export function AuthProvider({ children }) {
 		});
 	}
 
-	function setUserData(userData) {
-		return setDoc(doc(db, "students", currentUser.uid), userData);
+	function setUserData(id, userData) {
+		return setDoc(doc(db, "students", id), userData);
 	}
 
-	function getData() {
-		return getDoc(doc(db, "students", currentUser.uid));
+	function getData(id) {
+		return getDoc(doc(db, "students", id));
 	}
 
+	function getAllStudents() {
+		return getDocs(collection(db, "students"));
+	}
+
+	function deleteData(id) {
+		return deleteDoc(doc(db, "students", id));
+	}
 	useEffect(() => {
 		let unsubscribe = onAuthStateChanged(auth, (user) => {
 			setCurrentUser(user);
@@ -59,6 +73,8 @@ export function AuthProvider({ children }) {
 		setProfile,
 		setUserData,
 		getData,
+		deleteData,
+		getAllStudents,
 	};
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

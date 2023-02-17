@@ -1,6 +1,5 @@
 import React from "react";
 import { UilArrowRight } from "@iconscout/react-unicons";
-import aboutImg from "../Assets/about.jpg";
 
 function About() {
 	return (

@@ -11,7 +11,7 @@ function Details({ user }) {
 					</td>
 					<td>
 						{" "}
-						<p>{user.name}</p>{" "}
+						<p>{user.fName + user.lName}</p>{" "}
 					</td>
 				</tr>
 				<tr>

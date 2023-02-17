@@ -9,10 +9,10 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Dashboard from "./Pages/Dashboard";
 import { AuthProvider } from "./Components/contexts/AuthContext";
-import ProfileForm from "./Pages/ProfileForm";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AuthRoute from "./Pages/AuthRoute";
 import SignUp from "./Pages/SignUp";
+import NewStudent from "./Pages/Forms/NewStudent";
 import UpdateForm from "./Pages/Forms/UpdateForm";
 
 function App() {
@@ -44,7 +44,15 @@ function App() {
 						}
 					/>
 					<Route
-						path="/update_form"
+						path="/add_student"
+						element={
+							<AuthRoute>
+								<NewStudent />
+							</AuthRoute>
+						}
+					/>
+					<Route
+						path="/update_student"
 						element={
 							<AuthRoute>
 								<UpdateForm />

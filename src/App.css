@@ -66,7 +66,8 @@ small,
 .profile-form,
 .admin-login,
 .admin-dashboard,
-.update-form {
+.update-form,
+.message {
 	min-height: 95vh;
 	margin-top: 6rem;
 	padding: 2rem 8rem;
@@ -89,6 +90,18 @@ a {
 
 ul li {
 	list-style: none;
+}
+
+.carousel-wrapper {
+	padding: 2rem 8rem;
+}
+
+.carousel-wrapper div {
+	padding: 0 1rem;
+}
+
+.carousel-wrapper img {
+	width: 100%;
 }
 
 .navbar {
@@ -149,17 +162,19 @@ ul li {
 }
 
 .home {
-	background-image: url(./Assets/collegeImg.jpg);
+	background: url(./Assets/collegeImg.jpg);
 	background-repeat: no-repeat;
 	background-position: right;
 	background-size: calc(60%);
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
 	text-align: left;
 }
 
 .landing {
-	max-width: 50vw;
+	max-width: 60%;
 	background-color: transparent;
 }
 
@@ -703,4 +718,106 @@ ul li {
 	flex-direction: row-reverse;
 	justify-content: center;
 	margin-top: 8rem;
+}
+
+.message {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1 1 auto;
+}
+
+/* card styles */
+
+.card-category-1 {
+	margin-bottom: 45px;
+	text-align: center;
+}
+
+.card-category-1 div {
+	display: inline-block;
+	margin: 10px 5px;
+	text-align: left;
+}
+
+.basic-card {
+	max-width: 25rem;
+	height: 18rem;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	-webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.basic-card .card-content {
+	padding: 30px;
+}
+
+.read-more {
+	display: block;
+	text-align: center;
+}
+.card-content {
+	overflow: hidden;
+	height: 10rem;
+}
+
+.basic-card .card-title {
+	font-size: 25px;
+	font-family: "Open Sans", sans-serif;
+}
+
+.basic-card .card-text {
+	line-height: 1.6;
+}
+
+.basic-card .card-link {
+	padding: 25px;
+	width: -webkit-fill-available;
+}
+
+.basic-card .card-link a {
+	text-decoration: none;
+	position: relative;
+	padding: 10px 0px;
+}
+
+.basic-card .card-link a:after {
+	top: 30px;
+	content: "";
+	display: block;
+	height: 2px;
+	left: 50%;
+	position: absolute;
+	width: 0;
+
+	-webkit-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	-moz-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	-o-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.basic-card .card-link a:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+.basic-card-aqua {
+	background-image: linear-gradient(to bottom right, #00bfad, #99a3d4);
+}
+
+.basic-card-aqua .card-content,
+.basic-card .card-link a {
+	color: #fff;
+}
+
+.basic-card-aqua .card-link {
+	border-top: 1px solid #82c1bb;
+}
+
+.basic-card-aqua .card-link a:after {
+	background: #fff;
 }

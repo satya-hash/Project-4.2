@@ -4,19 +4,12 @@ import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
 import logo from "../Assets/logo.png";
 import login from "../Assets/login.svg";
 import { useAuth } from "../Components/contexts/AuthContext";
-
-function Loading() {
-	return (
-		<div class="spinner-box">
-			<div class="three-quarter-spinner"></div>
-		</div>
-	);
-}
+import Loading from "../Components/Loading";
 
 function Login() {
 	let emailRef = useRef();
 	let passRef = useRef();
-	let { logIn, currentUser, getData } = useAuth();
+	let { logIn, currentUser } = useAuth();
 	let [load, setLoad] = useState(false);
 	let [error, setError] = useState("");
 	let navigate = useNavigate();

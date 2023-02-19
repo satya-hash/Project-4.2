@@ -1,20 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import err from "../Assets/404.png";
+import errImg from "../Assets/404.png";
 
 function ErrorPage() {
 	return (
-		<div className="error-page flex  items-center">
-			<div className="w-2/3 overflow-hidden">
-				<img src={err} alt="error page" className="w-full h-full" />
+		<div
+			className="error-page"
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				flex: "1 1 auto",
+			}}
+		>
+			<div style={{ width: "100%" }}>
+				<img src={errImg} alt="error page" style={{ width: "100%" }} />
 			</div>
-			<div className="text-left ">
+			<div>
 				<h3>Page Not Found</h3>
 				<Link to="/">
-					<button className="px-8 py-3 btn bg-blue-600 border-2 border-blue-600  hover:bg-white hover:text-blue-600   text-white">
-						{" "}
-						Back To Home{" "}
-					</button>
+					<button className="btn"> Back To Home </button>
 				</Link>
 			</div>
 		</div>

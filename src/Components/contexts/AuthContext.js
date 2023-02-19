@@ -8,6 +8,7 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import {
+	addDoc,
 	collection,
 	deleteDoc,
 	doc,
@@ -40,6 +41,14 @@ export function AuthProvider({ children }) {
 		return updateProfile(currentUser, {
 			displayName: userName,
 		});
+	}
+
+	function sendMessage(data) {
+		return addDoc(collection(db, "message"), data);
+	}
+
+	function getMessage() {
+		return getDocs(collection(db, "message"));
 	}
 
 	function setUserData(id, userData) {
@@ -75,6 +84,8 @@ export function AuthProvider({ children }) {
 		getData,
 		deleteData,
 		getAllStudents,
+		sendMessage,
+		getMessage,
 	};
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

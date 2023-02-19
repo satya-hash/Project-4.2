@@ -5,7 +5,6 @@ import { useAuth } from "./contexts/AuthContext";
 import {
 	UilFacebookF,
 	UilTwitter,
-	UilGithub,
 	UilInstagramAlt,
 } from "@iconscout/react-unicons";
 
@@ -23,22 +22,22 @@ function Footer() {
 					<div className="footer-social">
 						<ul>
 							<li>
-								<a href="*">
+								<a href="https://www.facebook.com/andhrauniversitydotedudotin/">
 									<UilFacebookF size="24" color="#1F92CD" />
 								</a>
 							</li>
 							<li>
-								<a href="*">
+								<a href="https://twitter.com/andhrauniversit?lang=en">
 									<UilTwitter size="24" color="#39BCF8" />
 								</a>
 							</li>
-							<li>
+							{/* <li>
 								<a href="*">
 									<UilGithub size="24" />
 								</a>
-							</li>
+							</li> */}
 							<li>
-								<a href="*">
+								<a href="https://www.instagram.com/andhrauniversity.official/?hl=en">
 									<UilInstagramAlt size="24" color="#BA30A6" />
 								</a>
 							</li>
@@ -52,16 +51,17 @@ function Footer() {
 							<li>
 								<Link to="/">Home</Link>
 							</li>
-
+							{currentUser && (
+								<li>
+									<Link to="/message">Messages</Link>
+								</li>
+							)}
 							<li>
 								<Link to="/contact">Contact Us</Link>
 							</li>
 							<li>
 								<Link to="/about">About Us</Link>
 							</li>
-							{/* <li>
-								<Link to="/admin">Admin Login</Link>
-							</li> */}
 						</ul>
 					</div>
 					<div className="page-links ">

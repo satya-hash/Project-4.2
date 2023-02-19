@@ -14,6 +14,7 @@ import AuthRoute from "./Pages/AuthRoute";
 import SignUp from "./Pages/SignUp";
 import NewStudent from "./Pages/Forms/NewStudent";
 import UpdateForm from "./Pages/Forms/UpdateForm";
+import Messages from "./Pages/Admin/Messages";
 
 function App() {
 	return (
@@ -56,6 +57,14 @@ function App() {
 						element={
 							<AuthRoute>
 								<UpdateForm />
+							</AuthRoute>
+						}
+					/>
+					<Route
+						path="/message"
+						element={
+							<AuthRoute>
+								<Messages />
 							</AuthRoute>
 						}
 					/>

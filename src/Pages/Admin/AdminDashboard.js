@@ -15,7 +15,7 @@ function AdminDashboard() {
 		let snap = await getAllStudents();
 		snap.forEach((doc) => {
 			let data = doc.data();
-			if (data.role === "student") {
+			if (data.role !== "admin") {
 				userData.push({ id: doc.id, data: data });
 			}
 		});

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
+// import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
 import logo from "../Assets/logo.png";
 import login from "../Assets/login.svg";
 import { useAuth } from "../Components/contexts/AuthContext";
@@ -46,7 +46,18 @@ function Login() {
 						<img src={logo} alt="Logo" className="logo" />
 					</Link>
 				</div>
-				{error}
+				{
+					<p
+						style={{
+							color: "red",
+							textAlign: "center",
+							textTransform: "capitalize",
+						}}
+					>
+						{" "}
+						{error}{" "}
+					</p>
+				}
 				<form onSubmit={handleSubmit}>
 					<div>
 						<p>
@@ -77,12 +88,14 @@ function Login() {
 					<button type="submit" className="btn ">
 						Login
 					</button>
-					<div className="sign-op">
+					<div
+						className="sign-op"
+						style={{ textAlign: "center", margin: "0 auto" }}
+					>
 						<a href="*">Forget Password?</a>
-						<Link to="/signup">Sign Up</Link>
 					</div>
 					<hr />
-					<div>
+					{/* <div>
 						<small>Or Sign Up with</small>
 						<ul>
 							<li className=" icon">
@@ -101,7 +114,7 @@ function Login() {
 								</a>
 							</li>
 						</ul>
-					</div>
+					</div> */}
 				</form>
 			</div>
 		</div>

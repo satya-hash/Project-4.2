@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { UilFacebookF, UilEnvelope, UilGithub } from "@iconscout/react-unicons";
 import logo from "../Assets/logo.png";
 import login from "../Assets/login.svg";
 import { useAuth } from "../Components/contexts/AuthContext";

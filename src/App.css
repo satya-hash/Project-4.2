@@ -245,12 +245,21 @@ ul li {
 	background-color: #f0f1f0;
 	color: #000000;
 	display: flex;
+	gap: 1rem;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
 .about .card {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+}
+.about .card:nth-child(even) {
+	display: flex;
+	flex-direction: row-reverse;
 	justify-content: center;
 	align-items: center;
 	text-align: left;
@@ -262,7 +271,6 @@ ul li {
 	background-size: cover;
 	height: 75vh;
 	width: 40%;
-	border-radius: 1rem 0 0 1rem;
 }
 
 .card .card-right {

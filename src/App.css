@@ -266,11 +266,13 @@ ul li {
 }
 
 .card .card-left {
-	background-image: url(./Assets/about.jpg);
-	background-position: center;
-	background-size: cover;
 	height: 75vh;
 	width: 40%;
+}
+
+.card .card-left img {
+	width: 100%;
+	height: 100%;
 }
 
 .card .card-right {

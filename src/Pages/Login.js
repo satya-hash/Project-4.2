@@ -23,7 +23,6 @@ function Login() {
 			setLoad(true);
 			await logIn(emailRef.current.value, passRef.current.value);
 			navigate("/dashboard");
-			console.log("success");
 		} catch (err) {
 			setError(err.code);
 			console.error(err.code);

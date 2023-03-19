@@ -87,12 +87,12 @@ function Login() {
 					<button type="submit" className="btn ">
 						Login
 					</button>
-					<div
+					{/* <div
 						className="sign-op"
 						style={{ textAlign: "center", margin: "0 auto" }}
 					>
 						<a href="*">Forget Password?</a>
-					</div>
+					</div> */}
 					<hr />
 					{/* <div>
 						<small>Or Sign Up with</small>

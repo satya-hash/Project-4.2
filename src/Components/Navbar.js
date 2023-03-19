@@ -11,13 +11,11 @@ function Navbar() {
 		try {
 			await logOut();
 			navigate("/login");
-			console.log("logout");
 		} catch (err) {
 			console.error(err.message);
 		}
 	}
 
-	// console.table(currenUser);
 	return (
 		<div className="navbar">
 			<div className="logo ">
@@ -46,9 +44,6 @@ function Navbar() {
 
 			{!currentUser ? (
 				<ul>
-					{/* <li className="navlink">
-						<Link to="/admin">Admin</Link>
-					</li> */}
 					<li>
 						<Link to="/login">
 							<button className="btn">Login</button>
@@ -64,7 +59,6 @@ function Navbar() {
 						/>
 					</button>
 					<div class="dropdown-content">
-						<p> {currentUser.displayName}</p>
 						<button
 							style={{ background: "none", border: "none", outline: "none" }}
 							onClick={handleLogOut}

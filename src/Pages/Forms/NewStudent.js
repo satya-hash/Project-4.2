@@ -19,18 +19,68 @@ function NewStudent() {
 		dateOfBirth: "",
 		course: "",
 		attendance: {
-			year_1: "",
-			year_2: "",
-			year_3: "",
+			year_1: { one: "", two: "" },
+			year_2: { one: "", two: "" },
+			year_3: { one: "", two: "" },
+			year_4: { one: "", two: "" },
 		},
 		result: {
-			year_1: {
-				maths: "",
-				db: "",
-				cpnm: "",
-			},
-			year_2: { maths: "", toc: "", cpp: "" },
-			year_3: { maths: "", cn: "", dsa: "" },
+			year_1: [
+				{
+					maths: "",
+					physics: "",
+					engineering_grahics: "",
+					probabiligy_statistics: "",
+					ethics_moral_values: "",
+					physics_lab: "",
+					workshop: "",
+				},
+			],
+			year_2: [
+				{
+					eee: "",
+					dsa: "",
+					dld: "",
+					oop: "",
+					managerial_economics: "",
+					ds_lab: "",
+					oop_lab: "",
+				},
+				{
+					dm: "",
+					coa: "",
+					dbms: "",
+					daa: "",
+					organizational_behaviour: "",
+					es: "",
+					dbms_lab: "",
+					dld_lab: "",
+				},
+			],
+			year_3: [
+				{
+					cn: "",
+					os: "",
+					flat: "",
+					oose: "",
+					dc_cn: "",
+					os_lab: "",
+					soft_skills_lab: "",
+				},
+				{
+					cd: "",
+					wt: "",
+					dwdm: "",
+					sn: "",
+					ai: "",
+					es: "",
+					wt_lab: "",
+					es_lab: "",
+				},
+			],
+			year_4: [
+				{ ml: "", ml_lab: "", gps: "", cb: "", enterpreneurship: "", cns: "" },
+			],
 		},
 	});
 	const emailRef = useRef();
@@ -60,7 +110,12 @@ function NewStudent() {
 	function handleChange(event) {
 		const { name, value } = event.target;
 
-		if (name === "year_1" || name === "year_2" || name === "year_3") {
+		if (
+			name === "year_1" ||
+			name === "year_2" ||
+			name === "year_3" ||
+			name === "year_4"
+		) {
 			setStudent({
 				...student,
 				attendance: {
@@ -125,7 +180,7 @@ function NewStudent() {
 				<form onSubmit={handleSubmit}>
 					<strong>Account</strong>
 					<div className="account">
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="email"
 								name="email"
@@ -134,9 +189,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Email</span>
+							<span className="placeholder">Email</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="password"
 								name="password"
@@ -144,12 +199,12 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Password</span>
+							<span className="placeholder">Password</span>
 						</label>{" "}
 					</div>
 					<strong>Details</strong>
 					<div className="details">
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="text"
 								name="fName"
@@ -157,9 +212,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">First Name</span>
+							<span className="placeholder">First Name</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="text"
 								name="lName"
@@ -167,9 +222,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Last Name</span>
+							<span className="placeholder">Last Name</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="number"
 								name="mobileNo"
@@ -177,9 +232,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Mobile No</span>
+							<span className="placeholder">Mobile No</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="number"
 								name="age"
@@ -187,9 +242,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Age</span>
+							<span className="placeholder">Age</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="text"
 								name="course"
@@ -197,9 +252,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Course</span>
+							<span className="placeholder">Course</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="number"
 								name="yearOfJoin"
@@ -207,9 +262,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Year of Join</span>
+							<span className="placeholder">Year of Join</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="number"
 								name="yearOfStudy"
@@ -217,9 +272,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Year of Study</span>
+							<span className="placeholder">Year of Study</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="text"
 								name="role"
@@ -227,9 +282,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Role</span>
+							<span className="placeholder">Role</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="number"
 								name="regNo"
@@ -237,9 +292,9 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Registration No</span>
+							<span className="placeholder">Registration No</span>
 						</label>{" "}
-						<label class="custom-field two">
+						<label className="custom-field two">
 							<input
 								type="date"
 								name="dateOfBirth"
@@ -247,7 +302,7 @@ function NewStudent() {
 								placeholder="&nbsp;"
 								onChange={handleChange}
 							/>
-							<span class="placeholder">Date Of Birth </span>
+							<span className="placeholder">Date Of Birth </span>
 						</label>{" "}
 					</div>
 					<br />
@@ -255,18 +310,21 @@ function NewStudent() {
 					<div className="attend">
 						{Object.keys(student.attendance)
 							.sort()
-							.map((year) => (
-								<label class="custom-field two">
-									<input
-										type="text"
-										name={year}
-										value={student.attendance[year]}
-										placeholder="&nbsp;"
-										onChange={handleChange}
-									/>
-									<span class="placeholder">Attendance {year} </span>
-								</label>
-							))}
+							.map((year) => {
+								console.log(year);
+								return (
+									<label className="custom-field two">
+										<input
+											type="text"
+											name={year}
+											value={student.attendance[year]}
+											placeholder="&nbsp;"
+											onChange={handleChange}
+										/>
+										<span className="placeholder">Attendance {year} </span>
+									</label>
+								);
+							})}
 					</div>
 					<br />
 					<strong>Result</strong>
@@ -274,12 +332,10 @@ function NewStudent() {
 						{Object.entries(student.result)
 							.sort()
 							.map(([year, subs]) => {
-								console.log(year, subs);
 								return Object.entries(subs).map(([subName, subMarks]) => {
-									console.log(subName, subMarks);
 									return (
 										<>
-											<label class="custom-field two">
+											<label className="custom-field two">
 												<input
 													type="text"
 													name={subName}
@@ -297,7 +353,7 @@ function NewStudent() {
 													style={{
 														textTransform: "capitalize",
 													}}
-													class="placeholder"
+													className="placeholder"
 												>
 													{" "}
 													{subName}{" "}

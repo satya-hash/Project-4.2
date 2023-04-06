@@ -89,7 +89,7 @@ function UpdateForm() {
 					<form onSubmit={handleSubmit}>
 						<strong>Details</strong>
 						<div className="details">
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="text"
 									name="fName"
@@ -97,9 +97,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">First Name</span>
+								<span className="placeholder">First Name</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="text"
 									name="lName"
@@ -107,9 +107,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Last Name</span>
+								<span className="placeholder">Last Name</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="number"
 									name="mobileNo"
@@ -117,9 +117,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Mobile No</span>
+								<span className="placeholder">Mobile No</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="number"
 									name="age"
@@ -127,9 +127,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Age</span>
+								<span className="placeholder">Age</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="text"
 									name="course"
@@ -137,9 +137,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Course</span>
+								<span className="placeholder">Course</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="number"
 									name="yearOfJoin"
@@ -147,9 +147,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Year of Join</span>
+								<span className="placeholder">Year of Join</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="number"
 									name="yearOfStudy"
@@ -157,9 +157,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Year of Study</span>
+								<span className="placeholder">Year of Study</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="text"
 									name="role"
@@ -167,9 +167,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Role</span>
+								<span className="placeholder">Role</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="number"
 									name="regNo"
@@ -177,9 +177,9 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Registration No</span>
+								<span className="placeholder">Registration No</span>
 							</label>{" "}
-							<label class="custom-field two">
+							<label className="custom-field two">
 								<input
 									type="date"
 									name="dateOfBirth"
@@ -187,7 +187,7 @@ function UpdateForm() {
 									placeholder="&nbsp;"
 									onChange={handleChange}
 								/>
-								<span class="placeholder">Date Of Birth </span>
+								<span className="placeholder">Date Of Birth </span>
 							</label>{" "}
 						</div>
 						<br />
@@ -196,7 +196,7 @@ function UpdateForm() {
 							{Object.keys(student.attendance)
 								.sort()
 								.map((year) => (
-									<label class="custom-field two">
+									<label className="custom-field two">
 										<input
 											type="text"
 											name={year}
@@ -204,7 +204,7 @@ function UpdateForm() {
 											placeholder="&nbsp;"
 											onChange={handleChange}
 										/>
-										<span class="placeholder">Attendance {year} </span>
+										<span className="placeholder">Attendance {year} </span>
 									</label>
 								))}
 						</div>
@@ -219,7 +219,7 @@ function UpdateForm() {
 										console.log(subName, subMarks);
 										return (
 											<>
-												<label class="custom-field two">
+												<label className="custom-field two">
 													<input
 														type="text"
 														name={subName}
@@ -237,7 +237,7 @@ function UpdateForm() {
 														style={{
 															textTransform: "capitalize",
 														}}
-														class="placeholder"
+														className="placeholder"
 													>
 														{" "}
 														{subName}{" "}

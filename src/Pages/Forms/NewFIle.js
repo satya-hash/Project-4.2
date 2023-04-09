@@ -25,83 +25,62 @@ function NewStudent() {
 			year_4: { one: "", two: "" },
 		},
 		result: {
-			year_1: {
-				one: {
-					m1: "",
-					m2: "",
-					chemistry: "",
-					cpnm: "",
-					essence: "",
-					chemistry_lab: "",
-					cpnm_lab: "",
-				},
-				two: {
-					m3: "",
+			year_1: [
+				{
+					maths: "",
 					physics: "",
 					engineering_grahics: "",
-					psqt: "",
-					ethics_human_values: "",
+					probabiligy_statistics: "",
+					ethics_moral_values: "",
 					physics_lab: "",
 					workshop: "",
 				},
-			},
-			year_2: {
-				one: {
+			],
+			year_2: [
+				{
 					eee: "",
-					ece: "",
 					dsa: "",
 					dld: "",
 					oop: "",
-					pem: "",
+					managerial_economics: "",
 					ds_lab: "",
 					oop_lab: "",
 				},
-				two: {
+				{
 					dm: "",
 					coa: "",
 					dbms: "",
 					daa: "",
-					ob: "",
+					organizational_behaviour: "",
 					es: "",
 					dbms_lab: "",
 					dld_lab: "",
 				},
-			},
-			year_3: {
-				one: {
+			],
+			year_3: [
+				{
 					cn: "",
 					os: "",
 					flat: "",
 					oose: "",
-					or: "",
-					e_1: "",
+					dc_cn: "",
 					os_lab: "",
-					cn_lab: "",
-					soft_skilss: "",
+					soft_skills_lab: "",
 				},
-				two: {
+				{
 					cd: "",
 					wt: "",
-					e_2: "",
-					e_3: "",
 					dwdm: "",
 					sn: "",
-					e_2_lab: "",
+					ai: "",
+					es: "",
 					wt_lab: "",
+					es_lab: "",
 				},
-			},
-			year_4: {
-				one: {
-					ml: "",
-					gps: "",
-					cloud_tech: "",
-					cb: "",
-					enterpreneurship: "",
-					cns: "",
-					ml_lab: "",
-					cns_lab: "",
-				},
-			},
+			],
+			year_4: [
+				{ ml: "", ml_lab: "", gps: "", cb: "", enterpreneurship: "", cns: "" },
+			],
 		},
 	});
 	const emailRef = useRef();
@@ -109,208 +88,89 @@ function NewStudent() {
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		console.log(student);
 		try {
 			let newStudent = await signUp(
 				emailRef.current.value,
 				passwordRef.current.value
 			);
+			console.log("accout created");
 
 			await setUserData(newStudent.user.uid, student);
 
 			await setProfile(student.fName + student.lName);
 
 			await logIn(currentUser.email, currentUser.password);
-		} catch (err) {}
+		} catch (err) {
+			console.log(err.message);
+			console.log(err.code);
+		}
 
 		navigate("/admin_dashboard");
 	}
 	function handleChange(event) {
 		const { name, value } = event.target;
 
-		setStudent({ ...student, [name]: value });
+		if (
+			name === "year_1" ||
+			name === "year_2" ||
+			name === "year_3" ||
+			name === "year_4"
+		) {
+			setStudent({
+				...student,
+				attendance: {
+					...student.attendance,
+					[name]: value,
+				},
+			});
+		} else {
+			setStudent({ ...student, [name]: value });
+		}
 	}
-
-	function handleChangeAttendance_1(e) {
-		let { name, value } = e.target;
+	function handleChangeAttendance(e) {
 		setStudent({
 			...student,
 			attendance: {
 				...student.attendance,
+				[e.target.name]: e.target.value,
+			},
+		});
+	}
+	function handleChangeResultYear_1(e) {
+		setStudent({
+			...student,
+			result: {
+				...student.result,
 				year_1: {
-					...student.attendance.year_1,
-					[name]: value,
+					...student.result.year_1,
+					[e.target.name]: e.target.value,
 				},
 			},
 		});
 	}
-	function handleChangeAttendance_2(e) {
-		let { name, value } = e.target;
+	function handleChangeResultYear_2(e) {
 		setStudent({
 			...student,
-			attendance: {
-				...student.attendance,
+			result: {
+				...student.result,
 				year_2: {
-					...student.attendance.year_1,
-					[name]: value,
+					...student.result.year_2,
+					[e.target.name]: e.target.value,
 				},
 			},
 		});
 	}
-	function handleChangeAttendance_3(e) {
-		let { name, value } = e.target;
+	function handleChangeResultYear_3(e) {
 		setStudent({
 			...student,
-			attendance: {
-				...student.attendance,
+			result: {
+				...student.result,
 				year_3: {
-					...student.attendance.year_1,
-					[name]: value,
+					...student.result.year_3,
+					[e.target.name]: e.target.value,
 				},
 			},
 		});
-	}
-	function handleChangeAttendance_4(e) {
-		let { name, value } = e.target;
-		setStudent({
-			...student,
-			attendance: {
-				...student.attendance,
-				year_4: {
-					...student.attendance.year_1,
-					[name]: value,
-				},
-			},
-		});
-	}
-
-	function handleChangeResult_1(e, sem) {
-		let { name, value } = e.target;
-		if (sem === "one") {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_1: {
-						...student.result.year_1,
-						one: {
-							...student.result.year_1.one,
-							[name]: value,
-						},
-					},
-				},
-			});
-		} else {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_1: {
-						...student.result.year_1,
-						two: {
-							...student.result.year_1.two,
-							[name]: value,
-						},
-					},
-				},
-			});
-		}
-	}
-	function handleChangeResult_2(e, sem) {
-		let { name, value } = e.target;
-		if (sem === "one") {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_2: {
-						...student.result.year_2,
-						one: {
-							...student.result.year_2.one,
-							[name]: value,
-						},
-					},
-				},
-			});
-		} else {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_2: {
-						...student.result.year_2,
-						two: {
-							...student.result.year_2.two,
-							[name]: value,
-						},
-					},
-				},
-			});
-		}
-	}
-	function handleChangeResult_3(e, sem) {
-		let { name, value } = e.target;
-		if (sem === "one") {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_3: {
-						...student.result.year_3,
-						one: {
-							...student.result.year_3.one,
-							[name]: value,
-						},
-					},
-				},
-			});
-		} else {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_3: {
-						...student.result.year_3,
-						two: {
-							...student.result.year_3.two,
-							[name]: value,
-						},
-					},
-				},
-			});
-		}
-	}
-	function handleChangeResult_4(e, sem) {
-		let { name, value } = e.target;
-		if (sem === "one") {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_4: {
-						...student.result.year_4,
-						one: {
-							...student.result.year_4.one,
-							[name]: value,
-						},
-					},
-				},
-			});
-		} else {
-			setStudent({
-				...student,
-				result: {
-					...student.result,
-					year_4: {
-						...student.result.year_4,
-						two: {
-							...student.result.year_4.two,
-							[name]: value,
-						},
-					},
-				},
-			});
-		}
 	}
 
 	return (
@@ -448,80 +308,62 @@ function NewStudent() {
 					<br />
 					<strong> Attendance </strong>
 					<div className="attend">
-						{Object.entries(student.attendance).map(([key, value]) => {
-							return (
-								<>
-									<br />
-									{Object.entries(value).map(([k, v]) => {
-										return (
-											<label className="custom-field two">
-												<input
-													type="text"
-													name={k}
-													// value={student.attendance[key]}
-													placeholder="&nbsp;"
-													onChange={
-														key === "year_1"
-															? handleChangeAttendance_1
-															: key === "year_2"
-															? handleChangeAttendance_2
-															: key === "year_3"
-															? handleChangeAttendance_3
-															: handleChangeAttendance_4
-													}
-												/>
-												<span className="placeholder">
-													Attendance {`${key} sem ${k}`}{" "}
-												</span>
-											</label>
-										);
-									})}
-								</>
-							);
-						})}
+						{Object.entries(student.attendance)
+							.sort()
+							.forEach(([key, value]) => {
+								Object.entries(value).map(([k, v]) => {
+									return (
+										<label className="custom-field two">
+											<input
+												type="text"
+												// name={key}
+												// value={student.attendance[key]}
+												placeholder="&nbsp;"
+												// onChange={handleChange}
+											/>
+											<span className="placeholder">Attendance {key} </span>
+										</label>
+									);
+								});
+							})}
 					</div>
 					<br />
 					<strong>Result</strong>
 					<div className="result">
-						{Object.entries(student.result).map(([year, value]) => {
-							return (
-								<>
-									<h5 style={{ textTransform: "capitalize" }}> {year} </h5>
-									{Object.entries(value).map(([sem, subs]) => {
-										return (
-											<>
-												<br />
-												{Object.entries(subs).map(([k, v]) => {
-													return (
-														<label
-															style={{ textTransform: "capitalize" }}
-															className="custom-field two"
-														>
-															<input
-																type="text"
-																name={k}
-																// value={student.attendance[key]}
-																placeholder="&nbsp;"
-																onChange={(e) => {
-																	if (year === "year_1") {
-																		handleChangeResult_1(e, sem);
-																	} else if (year === "year_2") {
-																		handleChangeResult_2(e, sem);
-																	} else if (year === "year_3") {
-																		handleChangeResult_3(e, sem);
-																	} else handleChangeResult_4(e, sem);
-																}}
-															/>
-															<span className="placeholder"> {` ${k} `} </span>
-														</label>
-													);
-												})}
-											</>
-										);
-									})}
-								</>
-							);
-						})}
+						{Object.entries(student.result)
+							.sort()
+							.map(([year, subs]) => {
+								return Object.entries(subs).map(([subName, subMarks]) => {
+									return (
+										<>
+											<label className="custom-field two">
+												<input
+													type="text"
+													name={subName}
+													value={subMarks}
+													placeholder="&nbsp;"
+													onChange={
+														year === "year_1"
+															? handleChangeResultYear_1
+															: year === "year_2"
+															? handleChangeResultYear_2
+															: handleChangeResultYear_3
+													}
+												/>
+												<span
+													style={{
+														textTransform: "capitalize",
+													}}
+													className="placeholder"
+												>
+													{" "}
+													{subName}{" "}
+												</span>
+											</label>
+										</>
+									);
+								});
+							})}
 					</div>
 					<button
 						className="btn"

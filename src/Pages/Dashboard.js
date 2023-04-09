@@ -67,7 +67,7 @@ function Dashboard() {
 					</div>
 					<div>
 						{result && <Result user={user} />}
-						{attendance && <Attendance user={user} />}
+						{attendance && <Attendance attendance={user.attendance} />}
 						{details && <Details user={user} />}
 					</div>
 				</div>

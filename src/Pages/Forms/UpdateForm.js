@@ -6,8 +6,104 @@ function UpdateForm() {
 	let { getData, setUserData } = useAuth();
 	let navigate = useNavigate();
 	let { state } = useLocation();
-	const [student, setStudent] = useState();
-
+	const [student, setStudent] = useState({
+		email: "",
+		fName: "",
+		lName: "",
+		age: "",
+		role: "",
+		regNo: "",
+		mobileNo: "",
+		yearOfJoin: "",
+		yearOfStudy: "",
+		dateOfBirth: "",
+		course: "",
+		attendance: {
+			year_1: { one: "", two: "" },
+			year_2: { one: "", two: "" },
+			year_3: { one: "", two: "" },
+			year_4: { one: "", two: "" },
+		},
+		result: {
+			year_1: {
+				one: {
+					m1: "",
+					m2: "",
+					chemistry: "",
+					cpnm: "",
+					essence: "",
+					chemistry_lab: "",
+					cpnm_lab: "",
+				},
+				two: {
+					m3: "",
+					physics: "",
+					engineering_grahics: "",
+					psqt: "",
+					ethics_human_values: "",
+					physics_lab: "",
+					workshop: "",
+				},
+			},
+			year_2: {
+				one: {
+					eee: "",
+					ece: "",
+					dsa: "",
+					dld: "",
+					oop: "",
+					pem: "",
+					ds_lab: "",
+					oop_lab: "",
+				},
+				two: {
+					dm: "",
+					coa: "",
+					dbms: "",
+					daa: "",
+					ob: "",
+					es: "",
+					dbms_lab: "",
+					dld_lab: "",
+				},
+			},
+			year_3: {
+				one: {
+					cn: "",
+					os: "",
+					flat: "",
+					oose: "",
+					or: "",
+					e_1: "",
+					os_lab: "",
+					cn_lab: "",
+					soft_skilss: "",
+				},
+				two: {
+					cd: "",
+					wt: "",
+					e_2: "",
+					e_3: "",
+					dwdm: "",
+					sn: "",
+					e_2_lab: "",
+					wt_lab: "",
+				},
+			},
+			year_4: {
+				one: {
+					ml: "",
+					gps: "",
+					cloud_tech: "",
+					cb: "",
+					enterpreneurship: "",
+					cns: "",
+					ml_lab: "",
+					cns_lab: "",
+				},
+			},
+		},
+	});
 	async function handleSubmit(e) {
 		e.preventDefault();
 		try {
@@ -23,55 +119,189 @@ function UpdateForm() {
 	function handleChange(event) {
 		const { name, value } = event.target;
 
-		if (name === "year_1" || name === "year_2" || name === "year_3") {
+		setStudent({ ...student, [name]: value });
+	}
+
+	function handleChangeAttendance_1(e) {
+		let { name, value } = e.target;
+		setStudent({
+			...student,
+			attendance: {
+				...student.attendance,
+				year_1: {
+					...student.attendance.year_1,
+					[name]: value,
+				},
+			},
+		});
+	}
+	function handleChangeAttendance_2(e) {
+		let { name, value } = e.target;
+		setStudent({
+			...student,
+			attendance: {
+				...student.attendance,
+				year_2: {
+					...student.attendance.year_1,
+					[name]: value,
+				},
+			},
+		});
+	}
+	function handleChangeAttendance_3(e) {
+		let { name, value } = e.target;
+		setStudent({
+			...student,
+			attendance: {
+				...student.attendance,
+				year_3: {
+					...student.attendance.year_1,
+					[name]: value,
+				},
+			},
+		});
+	}
+	function handleChangeAttendance_4(e) {
+		let { name, value } = e.target;
+		setStudent({
+			...student,
+			attendance: {
+				...student.attendance,
+				year_4: {
+					...student.attendance.year_1,
+					[name]: value,
+				},
+			},
+		});
+	}
+
+	function handleChangeResult_1(e, sem) {
+		let { name, value } = e.target;
+		if (sem === "one") {
 			setStudent({
 				...student,
-				attendance: {
-					...student.attendance,
-					[name]: value,
+				result: {
+					...student.result,
+					year_1: {
+						...student.result.year_1,
+						one: {
+							...student.result.year_1.one,
+							[name]: value,
+						},
+					},
 				},
 			});
 		} else {
-			setStudent({ ...student, [name]: value });
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_1: {
+						...student.result.year_1,
+						two: {
+							...student.result.year_1.two,
+							[name]: value,
+						},
+					},
+				},
+			});
 		}
 	}
-	// function handleChangeAttendance(e) {
-
-	function handleChangeResultYear_1(e) {
-		setStudent({
-			...student,
-			result: {
-				...student.result,
-				year_1: {
-					...student.result.year_1,
-					[e.target.name]: e.target.value,
+	function handleChangeResult_2(e, sem) {
+		let { name, value } = e.target;
+		if (sem === "one") {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_2: {
+						...student.result.year_2,
+						one: {
+							...student.result.year_2.one,
+							[name]: value,
+						},
+					},
 				},
-			},
-		});
+			});
+		} else {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_2: {
+						...student.result.year_2,
+						two: {
+							...student.result.year_2.two,
+							[name]: value,
+						},
+					},
+				},
+			});
+		}
 	}
-	function handleChangeResultYear_2(e) {
-		setStudent({
-			...student,
-			result: {
-				...student.result,
-				year_2: {
-					...student.result.year_2,
-					[e.target.name]: e.target.value,
+	function handleChangeResult_3(e, sem) {
+		let { name, value } = e.target;
+		if (sem === "one") {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_3: {
+						...student.result.year_3,
+						one: {
+							...student.result.year_3.one,
+							[name]: value,
+						},
+					},
 				},
-			},
-		});
+			});
+		} else {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_3: {
+						...student.result.year_3,
+						two: {
+							...student.result.year_3.two,
+							[name]: value,
+						},
+					},
+				},
+			});
+		}
 	}
-	function handleChangeResultYear_3(e) {
-		setStudent({
-			...student,
-			result: {
-				...student.result,
-				year_3: {
-					...student.result.year_3,
-					[e.target.name]: e.target.value,
+	function handleChangeResult_4(e, sem) {
+		let { name, value } = e.target;
+		if (sem === "one") {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_4: {
+						...student.result.year_4,
+						one: {
+							...student.result.year_4.one,
+							[name]: value,
+						},
+					},
 				},
-			},
-		});
+			});
+		} else {
+			setStudent({
+				...student,
+				result: {
+					...student.result,
+					year_4: {
+						...student.result.year_4,
+						two: {
+							...student.result.year_4.two,
+							[name]: value,
+						},
+					},
+				},
+			});
+		}
 	}
 
 	async function giveData(id) {
@@ -193,60 +423,83 @@ function UpdateForm() {
 						<br />
 						<strong> Attendance </strong>
 						<div className="attend">
-							{Object.keys(student.attendance)
-								.sort()
-								.map((year) => (
-									<label className="custom-field two">
-										<input
-											type="text"
-											name={year}
-											value={student.attendance[year]}
-											placeholder="&nbsp;"
-											onChange={handleChange}
-										/>
-										<span className="placeholder">Attendance {year} </span>
-									</label>
-								))}
+							{Object.entries(student.attendance).map(([key, value]) => {
+								return (
+									<>
+										<br />
+										{Object.entries(value).map(([k, v]) => {
+											return (
+												<label className="custom-field two">
+													<input
+														type="text"
+														name={k}
+														value={v}
+														placeholder="&nbsp;"
+														onChange={
+															key === "year_1"
+																? handleChangeAttendance_1
+																: key === "year_2"
+																? handleChangeAttendance_2
+																: key === "year_3"
+																? handleChangeAttendance_3
+																: handleChangeAttendance_4
+														}
+													/>
+													<span className="placeholder">
+														Attendance {`${key} sem ${k}`}{" "}
+													</span>
+												</label>
+											);
+										})}
+									</>
+								);
+							})}
 						</div>
 						<br />
 						<strong>Result</strong>
 						<div className="result">
-							{Object.entries(student.result)
-								.sort()
-								.map(([year, subs]) => {
-									console.log(year, subs);
-									return Object.entries(subs).map(([subName, subMarks]) => {
-										console.log(subName, subMarks);
-										return (
-											<>
-												<label className="custom-field two">
-													<input
-														type="text"
-														name={subName}
-														value={subMarks}
-														placeholder="&nbsp;"
-														onChange={
-															year === "year_1"
-																? handleChangeResultYear_1
-																: year === "year_2"
-																? handleChangeResultYear_2
-																: handleChangeResultYear_3
-														}
-													/>
-													<span
-														style={{
-															textTransform: "capitalize",
-														}}
-														className="placeholder"
-													>
-														{" "}
-														{subName}{" "}
-													</span>
-												</label>
-											</>
-										);
-									});
-								})}
+							{Object.entries(student.result).map(([year, value]) => {
+								return (
+									<>
+										<h5 style={{ textTransform: "capitalize" }}> {year} </h5>
+										{Object.entries(value).map(([sem, subs]) => {
+											return (
+												<>
+													<br />
+													{Object.entries(subs).map(([k, v]) => {
+														return (
+															<label
+																style={{ textTransform: "capitalize" }}
+																className="custom-field two"
+															>
+																<input
+																	type="text"
+																	name={k}
+																	value={v}
+																	placeholder="&nbsp;"
+																	onChange={(e) => {
+																		if (year === "year_1") {
+																			handleChangeResult_1(e, sem);
+																		} else if (year === "year_2") {
+																			handleChangeResult_2(e, sem);
+																		} else if (year === "year_3") {
+																			handleChangeResult_3(e, sem);
+																		} else handleChangeResult_4(e, sem);
+																	}}
+																/>
+																<span className="placeholder">
+																	{" "}
+																	{` ${k} `}{" "}
+																</span>
+															</label>
+														);
+													})}
+												</>
+											);
+										})}
+									</>
+								);
+							})}
 						</div>
 						<button
 							className="btn"

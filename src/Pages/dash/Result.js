@@ -56,51 +56,131 @@ function Show({ user, result }) {
 }
 
 function Result({ user }) {
-	const [yearOne, setyearOne] = useState(false);
-	const [yearTwo, setyearTwo] = useState(false);
-	const [yearThree, setyearThree] = useState(false);
-	console.log(user);
+	const [sem_1, setSem_1] = useState(false);
+	const [sem_2, setSem_2] = useState(false);
+	const [sem_3, setSem_3] = useState(false);
+	const [sem_4, setSem_4] = useState(false);
+	const [sem_5, setSem_5] = useState(false);
+	const [sem_6, setSem_6] = useState(false);
+	const [sem_7, setSem_7] = useState(false);
 	return (
 		<>
 			<div>
 				<button
 					className=" resultbtn "
 					onClick={() => {
-						setyearOne(true);
-						setyearTwo(false);
-						setyearThree(false);
+						setSem_1(true);
+						setSem_2(false);
+						setSem_3(false);
+						setSem_4(false);
+						setSem_5(false);
+						setSem_6(false);
+						setSem_7(false);
 					}}
 				>
 					{" "}
-					Year-1{" "}
+					SEM_1{" "}
 				</button>
 				<button
 					className=" resultbtn "
 					onClick={() => {
-						setyearOne(false);
-						setyearTwo(true);
-						setyearThree(false);
+						setSem_1(false);
+						setSem_2(true);
+						setSem_3(false);
+						setSem_4(false);
+						setSem_5(false);
+						setSem_6(false);
+						setSem_7(false);
 					}}
 				>
 					{" "}
-					Year-2{" "}
+					SEM_2{" "}
 				</button>
 				<button
 					className=" resultbtn "
 					onClick={() => {
-						setyearOne(false);
-						setyearTwo(false);
-						setyearThree(true);
+						setSem_1(false);
+						setSem_2(false);
+						setSem_3(true);
+						setSem_4(false);
+						setSem_5(false);
+						setSem_6(false);
+						setSem_7(false);
 					}}
 				>
 					{" "}
-					Year-3{" "}
+					SEM_3{" "}
+				</button>
+
+				<button
+					className=" resultbtn "
+					onClick={() => {
+						setSem_1(false);
+						setSem_2(false);
+						setSem_3(false);
+						setSem_4(true);
+						setSem_5(false);
+						setSem_6(false);
+						setSem_7(false);
+					}}
+				>
+					{" "}
+					SEM_4{" "}
+				</button>
+				<button
+					className=" resultbtn "
+					onClick={() => {
+						setSem_1(false);
+						setSem_2(false);
+						setSem_3(false);
+						setSem_4(false);
+						setSem_5(true);
+						setSem_6(false);
+						setSem_7(false);
+					}}
+				>
+					{" "}
+					SEM_5{" "}
+				</button>
+				<button
+					className=" resultbtn "
+					onClick={() => {
+						setSem_1(false);
+						setSem_2(false);
+						setSem_3(false);
+						setSem_4(false);
+						setSem_5(false);
+						setSem_6(true);
+						setSem_7(false);
+					}}
+				>
+					{" "}
+					SEM_6{" "}
+				</button>
+				<button
+					className=" resultbtn "
+					onClick={() => {
+						setSem_1(false);
+						setSem_2(false);
+						setSem_3(false);
+						setSem_4(false);
+						setSem_5(false);
+						setSem_6(false);
+						setSem_7(true);
+					}}
+				>
+					{" "}
+					SEM_7{" "}
 				</button>
 			</div>
 			<div>
-				{yearOne && <Show user={user} result={user.result.year_1} />}
-				{yearTwo && <Show user={user} result={user.result.year_2} />}
-				{yearThree && <Show user={user} result={user.result.year_3} />}
+				{sem_1 && <Show user={user} result={user.result.year_1.one} />}
+				{sem_2 && <Show user={user} result={user.result.year_1.two} />}
+				{sem_3 && <Show user={user} result={user.result.year_2.one} />}
+				{sem_4 && <Show user={user} result={user.result.year_2.two} />}
+				{sem_5 && <Show user={user} result={user.result.year_3.one} />}
+				{sem_6 && <Show user={user} result={user.result.year_3.two} />}
+				{sem_7 && <Show user={user} result={user.result.year_3.one} />}
 			</div>
 		</>
 	);

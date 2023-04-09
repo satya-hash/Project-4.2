@@ -11,7 +11,6 @@ import Dashboard from "./Pages/Dashboard";
 import { AuthProvider } from "./Components/contexts/AuthContext";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AuthRoute from "./Pages/AuthRoute";
-import SignUp from "./Pages/SignUp";
 import NewStudent from "./Pages/Forms/NewStudent";
 import UpdateForm from "./Pages/Forms/UpdateForm";
 import Messages from "./Pages/Admin/Messages";
@@ -26,7 +25,6 @@ function App() {
 					<Route path="/about" element={<AboutUS />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/login" element={<Login />} />
-					{/* <Route path="/signup" element={<SignUp />} /> */}
 
 					<Route
 						path="/dashboard"

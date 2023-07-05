@@ -14,6 +14,9 @@ import AuthRoute from "./Pages/AuthRoute";
 import NewStudent from "./Pages/Forms/NewStudent";
 import UpdateForm from "./Pages/Forms/UpdateForm";
 import Messages from "./Pages/Admin/Messages";
+import License from "./Pages/License";
+import Terms from "./Pages/Terms";
+import Privacy from "./Pages/Privacy";
 
 function App() {
 	return (
@@ -22,6 +25,9 @@ function App() {
 				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="/license" element={<License />} />
+					<Route path="/privacy" element={<Privacy />} />
+					<Route path="/terms" element={<Terms />} />
 					<Route path="/about" element={<AboutUS />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/login" element={<Login />} />

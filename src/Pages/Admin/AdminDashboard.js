@@ -9,7 +9,6 @@ function AdminDashboard() {
 	let navigate = useNavigate();
 
 	async function getAllStudentsData() {
-		console.log("start");
 		let userData = [];
 
 		let snap = await getAllStudents();
@@ -53,11 +52,14 @@ function AdminDashboard() {
 							<th>Update</th>
 							<th>Delete</th>
 						</tr>
-						{users.map(({ id, data }, index) => (
+						{users.sort().map(({ id, data }, index) => (
 							<tr>
 								<td> {index + 1} </td>
 								<td> {data.regNo} </td>
-								<td> {data.fName + " " + data.lName} </td>
+								<td style={{ textTransform: "uppercase" }}>
+									{" "}
+									{data.fName + " " + data.lName}{" "}
+								</td>
 								<td> {data.email} </td>
 								<td>
 									{" "}

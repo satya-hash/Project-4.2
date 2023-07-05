@@ -68,13 +68,13 @@ function Footer() {
 						<h5>Other Resources</h5>
 						<ul>
 							<li>
-								<Link to="/">MIT License</Link>
+								<Link to="/license">MIT License</Link>
 							</li>
 							<li>
-								<Link to="/circular">Terms & Conditions</Link>
+								<Link to="/terms">Terms & Conditions</Link>
 							</li>
 							<li>
-								<Link to="/contact">Privacy Policy</Link>
+								<Link to="/privacy">Privacy Policy</Link>
 							</li>
 						</ul>
 					</div>

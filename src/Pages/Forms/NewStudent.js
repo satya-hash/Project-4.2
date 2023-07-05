@@ -107,6 +107,14 @@ function NewStudent() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
+	const handleKeyCap = (event) => {
+		const regex = /[A-Z]/g;
+		const key = event.key;
+		if (!regex.test(key)) {
+			event.preventDefault();
+		}
+	};
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 		console.log(student);
@@ -502,6 +510,7 @@ function NewStudent() {
 																name={k}
 																// value={student.attendance[key]}
 																placeholder="&nbsp;"
+																onKeyDown={handleKeyCap}
 																onChange={(e) => {
 																	if (year === "year_1") {
 																		handleChangeResult_1(e, sem);

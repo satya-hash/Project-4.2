@@ -458,48 +458,50 @@ function UpdateForm() {
 						<br />
 						<strong>Result</strong>
 						<div className="result">
-							{Object.entries(student.result).map(([year, value]) => {
-								return (
-									<>
-										<h5 style={{ textTransform: "capitalize" }}> {year} </h5>
-										{Object.entries(value).map(([sem, subs]) => {
-											return (
-												<>
-													<br />
-													{Object.entries(subs).map(([k, v]) => {
-														return (
-															<label
-																style={{ textTransform: "capitalize" }}
-																className="custom-field two"
-															>
-																<input
-																	type="text"
-																	name={k}
-																	value={v}
-																	placeholder="&nbsp;"
-																	onChange={(e) => {
-																		if (year === "year_1") {
-																			handleChangeResult_1(e, sem);
-																		} else if (year === "year_2") {
-																			handleChangeResult_2(e, sem);
-																		} else if (year === "year_3") {
-																			handleChangeResult_3(e, sem);
-																		} else handleChangeResult_4(e, sem);
-																	}}
-																/>
-																<span className="placeholder">
-																	{" "}
-																	{` ${k} `}{" "}
-																</span>
-															</label>
-														);
-													})}
-												</>
-											);
-										})}
-									</>
-								);
-							})}
+							{Object.entries(student.result)
+								.sort()
+								.map(([year, value]) => {
+									return (
+										<>
+											<h5 style={{ textTransform: "capitalize" }}> {year} </h5>
+											{Object.entries(value).map(([sem, subs]) => {
+												return (
+													<>
+														<br />
+														{Object.entries(subs).map(([k, v]) => {
+															return (
+																<label
+																	style={{ textTransform: "capitalize" }}
+																	className="custom-field two"
+																>
+																	<input
+																		type="text"
+																		name={k}
+																		value={v}
+																		placeholder="&nbsp;"
+																		onChange={(e) => {
+																			if (year === "year_1") {
+																				handleChangeResult_1(e, sem);
+																			} else if (year === "year_2") {
+																				handleChangeResult_2(e, sem);
+																			} else if (year === "year_3") {
+																				handleChangeResult_3(e, sem);
+																			} else handleChangeResult_4(e, sem);
+																		}}
+																	/>
+																	<span className="placeholder">
+																		{" "}
+																		{` ${k} `}{" "}
+																	</span>
+																</label>
+															);
+														})}
+													</>
+												);
+											})}
+										</>
+									);
+								})}
 						</div>
 						<button
 							className="btn"

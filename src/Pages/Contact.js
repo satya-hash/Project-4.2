@@ -86,13 +86,13 @@ function Contact() {
 									</td>
 								</tr>
 							</a>
-							<a href="mailto:sathyagangadhar@gmail.com">
+							<a href="mailto:sathyagangadhara@gmail.com">
 								<tr>
 									<td>
 										<UilEnvelope size="28" />
 									</td>
 									<td>
-										<p>319106410046@andhrauniversity.edu.in</p>
+										<p>sathyagangadhara@gmail.com</p>
 									</td>
 								</tr>
 							</a>

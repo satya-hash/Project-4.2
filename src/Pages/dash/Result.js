@@ -1,6 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Show({ user, result }) {
+	const [gpa, setGpa] = useState(null);
+	let grades = Object.values(result);
+	function showGpa(grades) {
+		let gradesToPoints = {
+			O: 10,
+			"A+": 9,
+			A: 8,
+			"B+": 7,
+			B: 6,
+			C: 5,
+			P: 4,
+			F: 3,
+		};
+		let cgpa = 0;
+		let totalSubjects = grades.length;
+		for (let i = 0; i < grades.length; i++) {
+			if (grades[i] === "F") return (0).toFixed(2);
+			cgpa += gradesToPoints[grades[i]];
+		}
+		setGpa((cgpa / totalSubjects).toFixed(2));
+	}
+	useEffect(() => {
+		showGpa(grades);
+	}, []);
 	return (
 		<>
 			<table style={{ textAlign: "left" }}>
@@ -35,21 +59,32 @@ function Show({ user, result }) {
 					<th>Paper Name</th>
 					<th>Grade Obtained</th>
 				</tr>
-				{Object.entries(result)
-					.sort()
-					.map(([key, value], index) => {
-						return (
-							<tr>
-								<td> {index + 1} </td>
-								<td style={{ textTransform: "uppercase" }}>
-									{" "}
-									<strong> {key}</strong>
-								</td>
-								<td>{value}</td>
-							</tr>
-						);
-					})}
-				{}
+				{Object.entries(result).map(([key, value], index) => {
+					return (
+						<tr>
+							<td> {index + 1} </td>
+							<td style={{ textTransform: "uppercase" }}>
+								{" "}
+								<strong> {key}</strong>
+							</td>
+							<td>{value}</td>
+						</tr>
+					);
+				})}
+				<tr>
+					<td colSpan={2} style={{ textTransform: "uppercase" }}>
+						{" "}
+						<strong> Status </strong>
+					</td>
+					<td>{Object.values(result).includes("F") ? `Fail` : `Pass`}</td>
+				</tr>
+				<tr>
+					<td colSpan={2} style={{ textTransform: "uppercase" }}>
+						{" "}
+						<strong> GPA </strong>
+					</td>
+					<td>{gpa && gpa}</td>
+				</tr>
 			</table>
 		</>
 	);
@@ -180,7 +215,7 @@ function Result({ user }) {
 				{sem_4 && <Show user={user} result={user.result.year_2.two} />}
 				{sem_5 && <Show user={user} result={user.result.year_3.one} />}
 				{sem_6 && <Show user={user} result={user.result.year_3.two} />}
-				{sem_7 && <Show user={user} result={user.result.year_3.one} />}
+				{sem_7 && <Show user={user} result={user.result.year_4.one} />}
 			</div>
 		</>
 	);

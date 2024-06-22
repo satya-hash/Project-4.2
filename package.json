@@ -2,7 +2,7 @@
   "name": "final",
   "version": "0.1.0",
   "private": true,
-    "homepage": "https://satya-hash.github.io/Project-4.2/",
+    "homepage": "https://satya-hash.github.io/Project-4.2",
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/unicons": "^4.0.1",

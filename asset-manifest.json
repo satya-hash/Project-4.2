@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Project-4.2/static/css/main.88374fa4.css",
+    "main.js": "/Project-4.2/static/js/main.a6065585.js",
+    "static/media/snigdha.png": "/Project-4.2/static/media/snigdha.6336517b2cf00b28cbb5.png",
+    "static/media/satya.png": "/Project-4.2/static/media/satya.dd9d6dd8fc96b47dea35.png",
+    "static/media/collegeImg.jpg": "/Project-4.2/static/media/collegeImg.bd8a09bc6f2dd376ce3b.jpg",
+    "static/media/pranathi.png": "/Project-4.2/static/media/pranathi.b6274f3aca2d00d8ed6e.png",
+    "static/media/mani.png": "/Project-4.2/static/media/mani.9ebdd56f1b7a3addda70.png",
+    "static/media/akhil.png": "/Project-4.2/static/media/akhil.1ff380cddec6a1e267c5.png",
+    "static/media/404.png": "/Project-4.2/static/media/404.02069e9674874efbb4fa.png",
+    "static/media/logo.png": "/Project-4.2/static/media/logo.9a0c5de39a816a7948a0.png",
+    "static/media/attendanceIcon.png": "/Project-4.2/static/media/attendanceIcon.c7b8317092ee9eda053c.png",
+    "static/media/login.svg": "/Project-4.2/static/media/login.89179036dd3a6d9e5ddc15c171129843.svg",
+    "index.html": "/Project-4.2/index.html",
+    "main.88374fa4.css.map": "/Project-4.2/static/css/main.88374fa4.css.map",
+    "main.a6065585.js.map": "/Project-4.2/static/js/main.a6065585.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88374fa4.css",
+    "static/js/main.a6065585.js"
+  ]
+}

@@ -102,7 +102,7 @@ function Contact() {
 										<UilPhone size="28" />
 									</td>
 									<td>
-										<p>9550973113 </p>
+										<p>8341353034 </p>
 									</td>
 								</tr>
 							</a>
@@ -117,8 +117,7 @@ function Contact() {
 							style={{ border: 0 }}
 							allowFullScreen=""
 							loading="lazy"
-							referrerPolicy="no-referrer-when-downgrade"
-						></iframe>
+							referrerPolicy="no-referrer-when-downgrade"></iframe>
 					</div>
 				</div>
 			</div>
